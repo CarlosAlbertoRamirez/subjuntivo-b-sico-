@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Subjuntivo | Your Mexican Friend</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#25d9ff;--magenta:#ff2bbf;--magenta2:#ff4fd8;
+  --bg1:#070019;--bg2:#160033;--text:#f0f0ff;--muted:#a8abce;--muted2:#5a5d8a;
+  --good:#22c55e;--bad:#ef4444;--warn:#f59e0b;
+  --s1:#f97316;--s1b:rgba(249,115,22,.12);--s1d:rgba(249,115,22,.32);
+  --s2:#f472b6;--s2b:rgba(244,114,182,.12);--s2d:rgba(244,114,182,.32);
+  --s3:#a78bfa;--s3b:rgba(167,139,250,.12);--s3d:rgba(167,139,250,.32);
+  --s4:#60a5fa;--s4b:rgba(96,165,250,.12);--s4d:rgba(96,165,250,.32);
+  --s5:#34d399;--s5b:rgba(52,211,153,.12);--s5d:rgba(52,211,153,.32);
+  --s6:#fbbf24;--s6b:rgba(251,191,36,.12);--s6d:rgba(251,191,36,.32);
+  --subj:#a78bfa;--subjb:rgba(167,139,250,.15);--subjd:rgba(167,139,250,.35);
+  --ind:#34d399;--indb:rgba(52,211,153,.15);--indd:rgba(52,211,153,.35);
+  --font:'DM Sans',system-ui,sans-serif;--display:'Syne',system-ui,sans-serif;
+  --shadow:0 20px 40px rgba(0,0,0,.4),0 0 28px rgba(167,139,250,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:radial-gradient(ellipse at 15% 8%,rgba(167,139,250,.14),transparent 30%),radial-gradient(ellipse at 85% 10%,rgba(52,211,153,.1),transparent 30%),linear-gradient(155deg,var(--bg1),var(--bg2));color:var(--text);min-height:100vh}
+.app{width:min(1040px,96%);margin:14px auto 40px;display:flex;flex-direction:column;gap:12px}
+.hero{border-radius:22px;padding:22px 26px;background:linear-gradient(130deg,#0a0022,#1c0050 55%,#0c002e);border:1px solid rgba(255,255,255,.09);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:38px 38px;pointer-events:none}
+.hero-in{position:relative;z-index:1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo-box{width:64px;height:64px;flex-shrink:0;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0c0030,#280060);border:2px solid rgba(37,217,255,.28);font-family:var(--display);font-size:.9rem;font-weight:900;color:var(--magenta)}
+.hero-text h1{font-family:var(--display);font-size:clamp(1.2rem,2.4vw,2rem);font-weight:900;background:linear-gradient(90deg,var(--subj),#fff 45%,var(--ind));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-text p{color:var(--muted);font-size:.85rem;margin-top:4px;line-height:1.5}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:999px;padding:3px 10px;font-size:.7rem;font-weight:700;color:var(--muted)}
+.ex-tabs{display:flex;gap:4px;background:linear-gradient(180deg,rgba(18,4,42,.97),rgba(24,10,52,.97));border:1px solid rgba(37,217,255,.13);border-radius:18px;padding:7px;overflow-x:auto;scrollbar-width:none}
+.ex-tabs::-webkit-scrollbar{display:none}
+.etab{flex-shrink:0;border:0;border-radius:11px;padding:7px 10px;font-weight:800;font-family:var(--font);font-size:.72rem;cursor:pointer;transition:.16s;color:var(--muted2);background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:56px}
+.etab:hover{background:rgba(255,255,255,.07);color:var(--text)}
+.etab.active{background:linear-gradient(135deg,var(--magenta),var(--magenta2));color:white;transform:translateY(-1px)}
+.etab-icon{font-size:1.1rem;line-height:1}.etab-label{font-size:.58rem;text-align:center;line-height:1.2;opacity:.9}
+.panel{background:linear-gradient(180deg,rgba(18,4,42,.97),rgba(24,10,52,.97));border:1px solid rgba(37,217,255,.13);border-radius:20px;padding:22px 26px;box-shadow:var(--shadow)}
+.ex-title{font-family:var(--display);font-size:1.15rem;font-weight:900;margin-bottom:6px}
+.ex-instr{font-size:.85rem;color:var(--muted);line-height:1.6;padding:9px 14px;background:rgba(37,217,255,.07);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;margin-bottom:16px}
+.ex-instr em{color:var(--cyan);font-style:normal;font-weight:700}
+.score-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.sc{background:rgba(255,255,255,.05);border:1px solid rgba(37,217,255,.12);border-radius:11px;padding:6px 12px;display:flex;flex-direction:column;align-items:center}
+.sc .l{font-size:.56rem;font-weight:800;text-transform:uppercase;color:var(--muted2)}
+.sc .v{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--cyan)}
+.sc .v.g{color:var(--good)}.sc .v.b{color:var(--bad)}
+.prog-w{flex:1;min-width:90px}.prog-l{font-size:.65rem;color:var(--muted2);font-weight:700;margin-bottom:3px}
+.prog-t{height:5px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.prog-f{height:100%;border-radius:999px;transition:width .35s;background:linear-gradient(90deg,var(--subj),var(--ind))}
+.fb{display:none;margin-top:10px;padding:10px 15px;border-radius:10px;font-size:.88rem;line-height:1.6}
+.fb.show{display:block}
+.fb.ok{background:rgba(34,197,94,.12);border-left:4px solid var(--good);color:#bbf7d0;border-radius:0 11px 11px 0}
+.fb.partial{background:rgba(245,158,11,.1);border-left:4px solid var(--warn);color:#fde68a;border-radius:0 11px 11px 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.btn{border:0;border-radius:11px;padding:9px 18px;font-weight:800;font-family:var(--font);font-size:.83rem;cursor:pointer;transition:.15s}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0)}.btn:disabled{opacity:.38;cursor:not-allowed;transform:none}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#00bfff);color:#07111f}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(37,217,255,.18)}
+.btn-audio{background:rgba(37,217,255,.12);border:1.5px solid rgba(37,217,255,.28);color:var(--cyan);border-radius:8px;padding:4px 10px;font-size:.74rem;font-weight:800;cursor:pointer;transition:.13s;font-family:var(--font);display:inline-flex;align-items:center;gap:4px}
+.btn-audio:hover{background:rgba(37,217,255,.22)}.btn-audio.playing{animation:ablink .8s infinite}
+@keyframes ablink{0%,100%{opacity:1}50%{opacity:.5}}
+/* PILLS */
+.subj-pill{display:inline-block;background:var(--subjb);border:1px solid var(--subjd);color:#c4b5fd;border-radius:6px;padding:1px 7px;font-weight:900;font-family:var(--display);font-size:.88rem}
+.ind-pill{display:inline-block;background:var(--indb);border:1px solid var(--indd);color:#6ee7b7;border-radius:6px;padding:1px 7px;font-weight:900;font-family:var(--display);font-size:.88rem}
+.subj-hl{background:var(--subjb);border-radius:4px;padding:1px 3px;color:#c4b5fd;font-weight:900}
+/* EXPL */
+.expl-section{margin-bottom:22px}
+.expl-h{font-family:var(--display);font-size:1rem;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.expl-card{border-radius:14px;padding:15px 18px;margin-bottom:10px;line-height:1.75;font-size:.91rem}
+.vs-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.vs-box{border-radius:14px;padding:14px 16px}
+.vs-label{font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.vs-ex{font-size:.88rem;line-height:1.75}
+.trigger-row{border-radius:14px;padding:14px 18px;border:1.5px solid;margin-bottom:10px}
+.trigger-label{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.trigger-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.trigger-item{border-radius:9px;padding:7px 12px;font-size:.82rem}
+.trigger-item .es{font-weight:800}.trigger-item .en{font-size:.74rem;color:var(--muted);display:block;margin-top:1px}
+.trigger-ex{font-size:.83rem;color:var(--muted);line-height:1.65;font-style:italic;padding:8px 12px;background:rgba(255,255,255,.04);border-radius:8px}
+.conj-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:10px}
+.conj-table th{padding:7px 10px;text-align:left;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--muted2);border-bottom:1px solid rgba(255,255,255,.08)}
+.conj-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.05)}
+.conj-table tr:hover td{background:rgba(255,255,255,.03)}
+.conj-end{color:var(--s6);font-weight:900}
+.irr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:14px}
+.irr-card{border-radius:12px;padding:13px 15px;background:rgba(255,255,255,.04);border:1.5px solid var(--subjd)}
+.irr-verb{font-family:var(--display);font-size:1rem;font-weight:900;color:#c4b5fd;margin-bottom:5px}
+.irr-forms{font-size:.79rem;color:var(--muted);line-height:1.75}
+.irr-note{font-size:.71rem;color:var(--muted2);margin-top:5px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)}
+/* MC */
+.mc-list{display:flex;flex-direction:column;gap:10px}
+.mc-card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px}
+.mc-card.ok{border-color:var(--good);background:rgba(34,197,94,.04)}
+.mc-card.err{border-color:var(--bad);background:rgba(239,68,68,.04)}
+.mc-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.mc-num{font-size:.62rem;font-weight:900;background:rgba(255,255,255,.07);border-radius:6px;padding:3px 8px;flex-shrink:0;margin-top:2px}
+.mc-q{font-size:.98rem;line-height:1.7;flex:1}
+.mc-opts{display:flex;flex-wrap:wrap;gap:7px;padding-left:28px}
+.mc-opt{border:0;border-radius:10px;padding:8px 15px;font-weight:700;font-family:var(--font);font-size:.9rem;cursor:pointer;transition:.14s;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);color:var(--text)}
+.mc-opt:hover:not([disabled]){transform:translateY(-1px);border-color:rgba(167,139,250,.5)}
+.mc-opt[disabled]{cursor:default;transform:none}
+.mc-opt.mok{border-color:var(--good);background:rgba(34,197,94,.14);color:#86efac}
+.mc-opt.merr{border-color:var(--bad);background:rgba(239,68,68,.12);color:#fca5a5}
+.mc-opt.mshow{border-color:var(--good);background:rgba(34,197,94,.1);color:#86efac}
+.mc-exp{display:none;font-size:.79rem;color:var(--muted);line-height:1.6;margin-top:7px;padding:7px 12px 7px 28px;background:rgba(255,255,255,.04);border-radius:8px}
+.mc-exp.show{display:block}
+/* FILL */
+.fill-list{display:flex;flex-direction:column;gap:12px}
+.fill-card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.08);border-radius:14px;padding:15px 17px}
+.fill-card.ok{border-color:var(--good);background:rgba(34,197,94,.04)}
+.fill-card.err{border-color:var(--bad);background:rgba(239,68,68,.04)}
+.fill-ctx{font-size:.72rem;color:var(--muted2);font-style:italic;margin-bottom:6px}
+.fill-q{font-size:1rem;line-height:1.9;font-weight:600;margin-bottom:4px}
+.fill-en{font-size:.76rem;color:var(--muted2);font-style:italic;margin-bottom:10px}
+.fill-blank{display:inline-block;border-bottom:2.5px solid var(--subj);min-width:100px;text-align:center;padding:0 4px;color:#c4b5fd;font-weight:800;font-family:var(--display);font-size:1rem}
+.fill-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:6px}
+.fill-chip{border:0;border-radius:9px;padding:7px 14px;font-weight:700;font-family:var(--display);font-size:.9rem;cursor:pointer;transition:.13s;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);color:var(--text)}
+.fill-chip:hover:not([disabled]):not(.used){transform:translateY(-2px);border-color:rgba(167,139,250,.5)}
+.fill-chip.used{opacity:.22;cursor:not-allowed}
+.fill-chip.chip-ok{border-color:var(--good);background:rgba(34,197,94,.18);color:#86efac}
+.fill-chip.chip-err{border-color:var(--bad);background:rgba(239,68,68,.15);color:#fca5a5}
+.fill-exp{display:none;font-size:.8rem;color:var(--muted);margin-top:6px;padding:7px 10px;background:rgba(255,255,255,.04);border-radius:8px;line-height:1.6}
+.fill-exp.show{display:block}
+/* VS */
+.vs-ex-list{display:flex;flex-direction:column;gap:12px}
+.vs-ex-card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.08);border-radius:14px;padding:15px 17px}
+.vs-ex-card.ok{border-color:var(--good);background:rgba(34,197,94,.04)}
+.vs-ex-card.err{border-color:var(--bad);background:rgba(239,68,68,.04)}
+.vs-q{font-size:.97rem;line-height:1.85;font-weight:600;margin-bottom:10px}
+.vs-blank{display:inline-block;min-width:110px;text-align:center;padding:0 4px;font-weight:900;font-family:var(--display);font-size:1rem;border-bottom:2.5px solid var(--subj)}
+.vs-en{font-size:.76rem;color:var(--muted2);font-style:italic;margin-bottom:10px}
+.vs-choice{display:flex;gap:8px;flex-wrap:wrap}
+.vs-btn{border:0;border-radius:10px;padding:9px 16px;font-weight:900;font-family:var(--display);font-size:.92rem;cursor:pointer;transition:.14s;border:2px solid}
+.vs-btn.s{background:var(--subjb);border-color:var(--subjd);color:#c4b5fd}
+.vs-btn.i{background:var(--indb);border-color:var(--indd);color:#6ee7b7}
+.vs-btn:hover:not([disabled]){transform:translateY(-2px);filter:brightness(1.15)}
+.vs-btn[disabled]{cursor:default;transform:none}
+.vs-btn.vok{border-color:var(--good);background:rgba(34,197,94,.2);color:#86efac}
+.vs-btn.verr{border-color:var(--bad);background:rgba(239,68,68,.15);color:#fca5a5}
+.vs-exp{display:none;font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:8px;padding:8px 12px;background:rgba(255,255,255,.04);border-radius:8px}
+.vs-exp.show{display:block}
+/* DIAL */
+.dial-card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;margin-bottom:16px}
+.dial-card.ok{border-color:var(--good)}.dial-card.err{border-color:var(--bad)}
+.dial-scene{font-size:.75rem;color:var(--muted2);font-style:italic;padding:7px 13px;background:rgba(255,255,255,.04);border-radius:8px;margin-bottom:10px;border-left:3px solid var(--subj)}
+.chat-body{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.chat-row{display:flex;align-items:flex-end;gap:8px}
+.chat-row.right{flex-direction:row-reverse}
+.chat-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:rgba(255,255,255,.08)}
+.chat-bub{max-width:82%;padding:9px 13px;border-radius:16px;font-size:.9rem;line-height:1.6}
+.chat-row.left .chat-bub{background:rgba(255,255,255,.09);border-radius:4px 16px 16px 16px}
+.chat-row.right .chat-bub{background:rgba(167,139,250,.16);border:1px solid rgba(167,139,250,.25);border-radius:16px 4px 16px 16px}
+.chat-who{font-size:.6rem;font-weight:900;text-transform:uppercase;color:var(--muted2);margin-bottom:3px}
+.chat-en{font-size:.73rem;color:var(--muted2);font-style:italic;margin-top:3px}
+.chat-audio{background:none;border:0;cursor:pointer;font-size:.9rem;padding:2px 4px;border-radius:5px;opacity:.55;transition:.13s}
+.chat-audio:hover{opacity:1;background:rgba(255,255,255,.1)}
+.dial-q{font-size:.87rem;font-weight:700;color:var(--muted);margin:8px 0}
+.dial-opts{display:flex;flex-direction:column;gap:7px}
+.dial-opt{border:0;border-radius:10px;padding:9px 14px;font-weight:600;font-family:var(--font);font-size:.9rem;cursor:pointer;transition:.13s;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);color:var(--text);text-align:left}
+.dial-opt:hover:not([disabled]){transform:translateX(4px);border-color:rgba(167,139,250,.4)}
+.dial-opt[disabled]{cursor:default;transform:none}
+.dial-opt.dok{border-color:var(--good);background:rgba(34,197,94,.14);color:#86efac}
+.dial-opt.derr{border-color:var(--bad);background:rgba(239,68,68,.12);color:#fca5a5}
+.dial-opt.dshow{border-color:var(--good);background:rgba(34,197,94,.1);color:#86efac}
+.dial-exp{display:none;font-size:.8rem;color:var(--muted);line-height:1.55;margin-top:8px;padding:8px 12px;background:rgba(255,255,255,.04);border-radius:8px}
+.dial-exp.show{display:block}
+/* SPEED */
+.sp-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+.sp-stats{display:flex;gap:9px}
+.spst{background:rgba(255,255,255,.05);border:1px solid rgba(37,217,255,.12);border-radius:11px;padding:7px 14px;text-align:center}
+.spst .sl{font-size:.56rem;font-weight:800;text-transform:uppercase;color:var(--muted2)}
+.spst .sv{font-family:var(--display);font-size:1.2rem;font-weight:900;color:var(--cyan)}
+.spst .sv.g{color:var(--good)}.spst .sv.b{color:var(--bad)}.spst .sv.w{color:var(--warn)}
+.sp-card{background:rgba(255,255,255,.04);border:2px solid rgba(167,139,250,.2);border-radius:18px;padding:22px;text-align:center;width:100%;max-width:560px}
+.sp-cat{font-size:.72rem;font-weight:900;border-radius:999px;padding:4px 12px;display:inline-block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.sp-q{font-size:1rem;line-height:1.65}
+.sp-en{font-size:.82rem;color:var(--muted2);font-style:italic;margin-top:4px}
+.sp-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:560px}
+.sp-opt{border:0;border-radius:12px;padding:10px 14px;font-weight:900;font-family:var(--display);font-size:.9rem;cursor:pointer;transition:.13s;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);color:var(--text);text-align:left}
+.sp-opt:hover:not([disabled]){transform:translateY(-2px);border-color:rgba(167,139,250,.5)}
+.sp-opt[disabled]{cursor:default;transform:none}
+.sp-opt.spok{border-color:var(--good);background:rgba(34,197,94,.18);color:#86efac}
+.sp-opt.sperr{border-color:var(--bad);background:rgba(239,68,68,.14);color:#fca5a5}
+.sp-opt.spshow{border-color:var(--good);background:rgba(34,197,94,.1);color:#86efac}
+.sp-fb{min-height:38px;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:600;border-radius:9px;padding:0 14px;width:100%;max-width:560px}
+.sp-fb.ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:#86efac}
+.sp-fb.err{background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.22);color:#fca5a5}
+.sp-start{text-align:center;padding:16px 0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.sp-start h2{font-family:var(--display);font-size:1.4rem;font-weight:900}
+.streak{background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.3);border-radius:999px;padding:4px 12px;font-size:.74rem;font-weight:800;color:#fcd34d;display:none}
+.streak.on{display:inline-flex;align-items:center;gap:4px}
+.cf{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--display);font-size:2rem;font-weight:900;color:var(--warn);pointer-events:none;opacity:0;z-index:999}
+.cf.pop{animation:cfk .7s ease forwards}
+@keyframes cfk{0%{opacity:1;transform:translate(-50%,-60%) scale(.8)}40%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-40%) scale(1)}}
+/* FC */
+.fc-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.fc-prow{display:flex;align-items:center;gap:12px;width:100%;max-width:680px}
+.fc-cnt{font-size:.8rem;font-weight:800;color:var(--muted2);white-space:nowrap}
+.fc-trk{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.fc-fil{height:100%;border-radius:999px;transition:width .4s;background:linear-gradient(90deg,var(--subj),var(--ind))}
+.fc-card{width:100%;max-width:680px;min-height:260px;perspective:1000px;cursor:pointer}
+.fc-inner{position:relative;width:100%;min-height:260px;transition:transform .5s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.fc-card.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-front,.fc-back{position:absolute;inset:0;border-radius:20px;padding:22px 26px;backface-visibility:hidden;display:flex;flex-direction:column;gap:10px;min-height:260px;background:var(--subjb);border:1.5px solid var(--subjd)}
+.fc-back{transform:rotateY(180deg)}
+.fc-nav{display:flex;gap:8px;align-items:center;justify-content:center;width:100%;max-width:680px}
+.fc-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.fc-fbtn{border:0;border-radius:9px;padding:5px 13px;font-size:.73rem;font-weight:800;font-family:var(--font);cursor:pointer;transition:.14s;color:var(--muted);border:1.5px solid transparent;background:rgba(255,255,255,.07)}
+.fc-fbtn.active{background:rgba(167,139,250,.15);border-color:rgba(167,139,250,.35);color:#c4b5fd}
+/* REF */
+.ref-search{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(167,139,250,.25);color:var(--text);border-radius:11px;padding:10px 16px;font-family:var(--font);font-size:.95rem;outline:none;transition:.15s;margin-bottom:12px}
+.ref-search:focus{border-color:var(--subj);box-shadow:0 0 0 3px rgba(167,139,250,.12)}
+.ref-search::placeholder{color:var(--muted2)}
+.hl{background:rgba(167,139,250,.2);border-radius:3px;padding:0 2px}
+.creator{text-align:center;color:#4a4d78;font-size:.76rem;font-weight:700;margin-top:2px}
+.creator span{color:var(--magenta2)}
+@media(max-width:600px){.panel{padding:14px 12px}.vs-row{grid-template-columns:1fr}.sp-opts{grid-template-columns:1fr}.irr-grid{grid-template-columns:1fr 1fr}.trigger-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="cf" id="cf"></div>
+<header class="hero">
+  <div class="hero-in">
+    <div class="logo-box">YMF</div>
+    <div class="hero-text">
+      <h1>El Subjuntivo</h1>
+      <p>The subjunctive mood in Spanish — when to use it, how to trigger it, how to conjugate it, and all the key contrasts. Based on the YMF subjuntivo curriculum.</p>
+      <div class="badges">
+        <span class="badge">🆕 B1–B2</span>
+        <span class="badge" style="border-color:rgba(167,139,250,.4);color:#c4b5fd">🎯 Presente de subjuntivo</span>
+        <span class="badge" style="border-color:rgba(52,211,153,.4);color:#6ee7b7">🔀 Subj vs Ind</span>
+        <span class="badge" style="border-color:rgba(251,191,36,.4);color:var(--s6)">⚡ Irregulares</span>
+        <span class="badge">By Carlos &amp; Denisse</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="ex-tabs">
+  <button class="etab active" id="etab-0" onclick="goEx(0)"><span class="etab-icon">📖</span><span class="etab-label">Expli-<br>cación</span></button>
+  <button class="etab" id="etab-1" onclick="goEx(1)"><span class="etab-icon">🔧</span><span class="etab-label">Con-<br>juga</span></button>
+  <button class="etab" id="etab-2" onclick="goEx(2)"><span class="etab-icon">🎯</span><span class="etab-label">Trig-<br>gers</span></button>
+  <button class="etab" id="etab-3" onclick="goEx(3)"><span class="etab-icon">✏️</span><span class="etab-label">Com-<br>pleta</span></button>
+  <button class="etab" id="etab-4" onclick="goEx(4)"><span class="etab-icon">🔀</span><span class="etab-label">Subj vs<br>Ind</span></button>
+  <button class="etab" id="etab-5" onclick="goEx(5)"><span class="etab-icon">💬</span><span class="etab-label">Diá-<br>logos</span></button>
+  <button class="etab" id="etab-6" onclick="goEx(6)"><span class="etab-icon">⚡</span><span class="etab-label">Speed<br>round</span></button>
+  <button class="etab" id="etab-7" onclick="goEx(7)"><span class="etab-icon">📄</span><span class="etab-label">Refer-<br>encia</span></button>
+</div>
+<div id="exContainer"></div>
+<p class="creator">By <span>Carlos &amp; Denisse</span> · yourmexicanfriend.com</p>
+</div>
+<script>
+let _voice=null;
+function initVoice(){if(!window.speechSynthesis)return;const pick=()=>{const vs=window.speechSynthesis.getVoices();if(!vs.length)return;const tests=[v=>v.name==='Paulina',v=>v.name.includes('Paulina'),v=>v.lang==='es-MX'&&v.localService,v=>v.lang==='es-MX',v=>v.name.includes('Google')&&v.lang.startsWith('es'),v=>v.lang.startsWith('es')&&v.localService,v=>v.lang.startsWith('es')];for(const t of tests){const f=vs.find(t);if(f){_voice=f;break;}}};pick();if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=pick;setTimeout(pick,800);}
+initVoice();
+function speak(txt,btn){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();document.querySelectorAll('.btn-audio,.chat-audio').forEach(b=>{b.classList.remove('playing');if(b.textContent.includes('▶'))b.textContent='🔊';});const u=new SpeechSynthesisUtterance(txt);if(_voice)u.voice=_voice;u.lang=_voice?_voice.lang:'es-MX';u.rate=0.82;u.pitch=1;if(btn){btn.classList.add('playing');const o=btn.textContent;btn.textContent='🔊▶';u.onend=u.onerror=()=>{btn.classList.remove('playing');btn.textContent=o;};}window.speechSynthesis.speak(u);}
+function normS(s){return(s||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
+function seededShuffle(arr,seed){const a=[...arr];let s=seed;for(let i=a.length-1;i>0;i--){s=(s*1664525+1013904223)&0xffffffff;const j=Math.abs(s)%(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+let mc1Ans={},fillAns={},vsAns={},dialAns={},spAns={};
+let spIdx=0,spOk=0,spErr=0,spStreak=0;
+let fcIdx=0,fcFilter='all',fcFlipped=false;
+
+function goEx(n){[0,1,2,3,4,5,6,7].forEach(i=>document.getElementById('etab-'+i).classList.toggle('active',i===n));[renderExpl,renderConj,renderTriggers,renderFill,renderVS,renderDial,renderSpeed,renderRef][n]();window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ══════════════════════════════════
+   EX 0 — EXPLANATION
+   Based on YMF PPTX slides 2–19
+══════════════════════════════════ */
+function renderExpl(){
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">📖 El Subjuntivo — Guía completa</div>
+
+  <!-- SLIDE 2: QUE ES -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:#c4b5fd">🧠 ¿Qué es el subjuntivo?</div>
+    <div class="expl-card" style="background:rgba(167,139,250,.07);border:1.5px solid rgba(167,139,250,.2)">
+      <p>El subjuntivo expresa <strong>deseos, dudas, emociones e hipótesis</strong> — no describe hechos objetivos.</p>
+      <p style="margin-top:8px;color:var(--muted)">The subjunctive is used to express wishes, doubt, emotions, and hypotheticals — anything not stated as objective fact.</p>
+    </div>
+    <div class="vs-row">
+      <div class="vs-box" style="background:var(--indb);border:1.5px solid var(--indd)">
+        <div class="vs-label" style="color:#6ee7b7">✅ INDICATIVO — hechos</div>
+        <div class="vs-ex">
+          Ella <span class="ind-pill">habla</span> español.<br>
+          <span style="color:var(--muted);font-size:.78rem">She speaks Spanish. (fact)</span><br><br>
+          Tú <span class="ind-pill">eres</span> buena persona.<br>
+          <span style="color:var(--muted);font-size:.78rem">You are a good person. (fact)</span>
+        </div>
+      </div>
+      <div class="vs-box" style="background:var(--subjb);border:1.5px solid var(--subjd)">
+        <div class="vs-label" style="color:#c4b5fd">⚡ SUBJUNTIVO — deseos, emociones, dudas</div>
+        <div class="vs-ex">
+          Quiero que ella <span class="subj-pill">hable</span> español.<br>
+          <span style="color:var(--muted);font-size:.78rem">I want her to speak Spanish. (wish)</span><br><br>
+          Me alegra que <span class="subj-pill">seas</span> buena persona.<br>
+          <span style="color:var(--muted);font-size:.78rem">I am glad you are a good person. (emotion)</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(251,191,36,.08);border:1.5px solid rgba(251,191,36,.25);border-radius:13px;padding:13px 16px;font-size:.87rem;line-height:1.75">
+      ⚡ <strong style="color:var(--s6)">La fórmula:</strong> [sujeto 1] + [verbo disparador] + <strong>que</strong> + [sujeto 2] + <span class="subj-pill">subjuntivo</span><br>
+      <span style="color:var(--muted)">The word <strong style="color:var(--s6)">"que"</strong> is the hinge. Two different subjects = subjuntivo. Same subject = infinitive.</span>
+    </div>
+  </div>
+
+  <!-- SLIDES 3-4: FORMATION -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:var(--s6)">🔧 Formación — el truco de la 1.ª persona</div>
+    <div class="expl-card" style="background:rgba(251,191,36,.07);border:1.5px solid rgba(251,191,36,.25);font-size:.88rem;line-height:1.8">
+      <strong style="color:var(--s6)">1.</strong> Toma la 1.ª persona (yo) del presente de indicativo: <em>hablo, como, vivo</em><br>
+      <strong style="color:var(--s6)">2.</strong> Quita la -o: <em>habl-, com-, viv-</em><br>
+      <strong style="color:var(--s6)">3.</strong> Añade las terminaciones <em>opuestas</em>: <strong>-AR → terminaciones con E</strong> | <strong>-ER/-IR → terminaciones con A</strong>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px">
+      <div>
+        <div style="font-size:.68rem;font-weight:900;color:#6ee7b7;text-transform:uppercase;margin-bottom:8px">Hablar (−ar)</div>
+        <table class="conj-table">
+          <tr><td>yo</td><td>habl<span class="conj-end">e</span></td></tr>
+          <tr><td>tú</td><td>habl<span class="conj-end">es</span></td></tr>
+          <tr><td>él/ella</td><td>habl<span class="conj-end">e</span></td></tr>
+          <tr><td>nosotros</td><td>habl<span class="conj-end">emos</span></td></tr>
+          <tr><td>ellos</td><td>habl<span class="conj-end">en</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:.68rem;font-weight:900;color:#6ee7b7;text-transform:uppercase;margin-bottom:8px">Comer (−er)</div>
+        <table class="conj-table">
+          <tr><td>yo</td><td>com<span class="conj-end">a</span></td></tr>
+          <tr><td>tú</td><td>com<span class="conj-end">as</span></td></tr>
+          <tr><td>él/ella</td><td>com<span class="conj-end">a</span></td></tr>
+          <tr><td>nosotros</td><td>com<span class="conj-end">amos</span></td></tr>
+          <tr><td>ellos</td><td>com<span class="conj-end">an</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:.68rem;font-weight:900;color:#6ee7b7;text-transform:uppercase;margin-bottom:8px">Vivir (−ir)</div>
+        <table class="conj-table">
+          <tr><td>yo</td><td>viv<span class="conj-end">a</span></td></tr>
+          <tr><td>tú</td><td>viv<span class="conj-end">as</span></td></tr>
+          <tr><td>él/ella</td><td>viv<span class="conj-end">a</span></td></tr>
+          <tr><td>nosotros</td><td>viv<span class="conj-end">amos</span></td></tr>
+          <tr><td>ellos</td><td>viv<span class="conj-end">an</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: IRREGULARES -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:#c4b5fd">⚡ Verbos irregulares frecuentes</div>
+    <div class="irr-grid">
+      <div class="irr-card"><div class="irr-verb">ser</div><div class="irr-forms">sea · seas · sea · seamos · sean</div><div class="irr-note">Completely irregular — memorize!</div></div>
+      <div class="irr-card"><div class="irr-verb">estar</div><div class="irr-forms">esté · estés · esté · estemos · estén</div><div class="irr-note">Note the accent marks on every form</div></div>
+      <div class="irr-card"><div class="irr-verb">ir</div><div class="irr-forms">vaya · vayas · vaya · vayamos · vayan</div><div class="irr-note">Completely irregular — root "vay-"</div></div>
+      <div class="irr-card"><div class="irr-verb">haber</div><div class="irr-forms">haya (impersonal: hay → haya)</div><div class="irr-note">Hay → haya. Very common: es posible que haya...</div></div>
+      <div class="irr-card"><div class="irr-verb">tener</div><div class="irr-forms">tenga · tengas · tenga · tengamos · tengan</div><div class="irr-note">Go-go: tengo → teng- → tenga</div></div>
+      <div class="irr-card"><div class="irr-verb">hacer</div><div class="irr-forms">haga · hagas · haga · hagamos · hagan</div><div class="irr-note">Go-go: hago → hag- → haga</div></div>
+      <div class="irr-card"><div class="irr-verb">poder</div><div class="irr-forms">pueda · puedas · pueda · podamos · puedan</div><div class="irr-note">Stem change o→ue (nosotros: podamos)</div></div>
+      <div class="irr-card"><div class="irr-verb">saber</div><div class="irr-forms">sepa · sepas · sepa · sepamos · sepan</div><div class="irr-note">Irregular — NOT "saba." Memorize: sepa.</div></div>
+      <div class="irr-card"><div class="irr-verb">dar</div><div class="irr-forms">dé · des · dé · demos · den</div><div class="irr-note">Short but irregular — dé with accent!</div></div>
+    </div>
+    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:10px 14px;font-size:.83rem;color:var(--muted)">
+      💡 <strong style="color:var(--s6)">Go-go pattern:</strong> If the yo form ends in -go (tenGO, haGO, venGO, ponGO, salGO, diGO), drop the -o and add subjuntivo endings → tenga, haga, venga, ponga, salga, diga.
+    </div>
+  </div>
+
+  <!-- SLIDES 7-10: TRIGGERS -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:var(--s1)">🎯 Disparadores del subjuntivo</div>
+
+    <div class="trigger-row" style="background:var(--s1b);border-color:var(--s1d)">
+      <div class="trigger-label" style="color:var(--s1)">1. 🔥 Deseos, voluntad y peticiones — Wishes & requests</div>
+      <div class="trigger-grid">
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">querer que</span><span class="en">to want (someone) to</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">pedir que</span><span class="en">to ask/request that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">desear que</span><span class="en">to wish that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">exigir que</span><span class="en">to demand that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">esperar que</span><span class="en">to hope that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">necesitar que</span><span class="en">to need that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">preferir que</span><span class="en">to prefer that</span></div>
+        <div class="trigger-item" style="background:rgba(249,115,22,.1)"><span class="es">prohibir que</span><span class="en">to forbid that</span></div>
+      </div>
+      <div class="trigger-ex">Quiero que tú <span class="subj-pill">vayas</span> a la tienda. · Mi amigo quiere que yo <span class="subj-pill">vaya</span> a la tienda.</div>
+    </div>
+
+    <div class="trigger-row" style="background:var(--s2b);border-color:var(--s2d)">
+      <div class="trigger-label" style="color:var(--s2)">2. 💜 Emociones y sentimientos — Emotions & feelings</div>
+      <div class="trigger-grid">
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">alegrarse de que</span><span class="en">to be glad that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">molestar que</span><span class="en">to be annoyed that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">sentir que</span><span class="en">to regret that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">enfadarse de que</span><span class="en">to be angry that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">temer que</span><span class="en">to fear that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">gustar que</span><span class="en">to like that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">sorprenderse de que</span><span class="en">to be surprised that</span></div>
+        <div class="trigger-item" style="background:rgba(244,114,182,.1)"><span class="es">encantar que</span><span class="en">to love that</span></div>
+      </div>
+      <div class="trigger-ex">Me gusta que tú <span class="subj-pill">seas</span> muy divertido. · Me sorprende que siempre <span class="subj-pill">ganes</span> la lotería.</div>
+    </div>
+
+    <div class="trigger-row" style="background:var(--s3b);border-color:var(--s3d)">
+      <div class="trigger-label" style="color:var(--s3)">3. ❓ Duda, negación e incertidumbre — Doubt & denial</div>
+      <div class="trigger-grid">
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">dudar que</span><span class="en">to doubt that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">no estar seguro/a de que</span><span class="en">to not be sure that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">no creer que</span><span class="en">to not believe that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">no parecer que</span><span class="en">to not seem that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">no pensar que</span><span class="en">to not think that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">no estar claro que</span><span class="en">to not be clear that</span></div>
+        <div class="trigger-item" style="background:rgba(167,139,250,.1)"><span class="es">negar que</span><span class="en">to deny that</span></div>
+      </div>
+      <div class="trigger-ex">Dudo que tú <span class="subj-pill">seas</span> buen cocinero. · No está claro que <span class="subj-pill">vaya</span> a pasar algo.</div>
+    </div>
+
+    <div class="trigger-row" style="background:var(--s4b);border-color:var(--s4d)">
+      <div class="trigger-label" style="color:var(--s4)">4. ⭐ Expresiones impersonales — Impersonal expressions (es + adj + que)</div>
+      <div class="trigger-grid">
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es importante que</span><span class="en">It is important that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es bueno / malo que</span><span class="en">It is good / bad that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es necesario que</span><span class="en">It is necessary that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es raro que</span><span class="en">It is strange that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es posible que</span><span class="en">It is possible that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es una lástima que</span><span class="en">It is a pity that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es probable que</span><span class="en">It is probable that</span></div>
+        <div class="trigger-item" style="background:rgba(96,165,250,.1)"><span class="es">Es ridículo que</span><span class="en">It is ridiculous that</span></div>
+      </div>
+      <div class="trigger-ex">Es importante <span class="ind-pill">estudiar</span>. (same subject → infinitive) · Es importante que tú <span class="subj-pill">estudies</span> antes del examen. (different subject → subjuntivo)</div>
+    </div>
+  </div>
+
+  <!-- SLIDES 11-15: CONTRASTES CLAVE -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:var(--s5)">🔀 Contrastes clave — Indicativo vs. Subjuntivo</div>
+
+    <!-- Creer vs no creer (slide 12) -->
+    <div style="font-size:.78rem;font-weight:900;text-transform:uppercase;color:var(--s5);letter-spacing:.07em;margin-bottom:8px">1. Creer/pensar que — positivo vs. negativo</div>
+    <div class="vs-row" style="margin-bottom:14px">
+      <div class="vs-box" style="background:var(--indb);border:1.5px solid var(--indd)">
+        <div class="vs-label" style="color:#6ee7b7">✅ INDICATIVO — opinión positiva</div>
+        <div class="vs-ex">
+          Creo que tú <span class="ind-pill">eres</span> muy buena persona.<br>
+          Pienso que él <span class="ind-pill">es</span> buen cocinero.
+        </div>
+      </div>
+      <div class="vs-box" style="background:var(--subjb);border:1.5px solid var(--subjd)">
+        <div class="vs-label" style="color:#c4b5fd">⚡ SUBJUNTIVO — opinión negativa</div>
+        <div class="vs-ex">
+          No creo que tú <span class="subj-pill">seas</span> muy buena persona.<br>
+          No pienso que él <span class="subj-pill">sea</span> buen cocinero.
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:9px 14px;font-size:.83rem;margin-bottom:16px">
+      ⚠️ <strong style="color:var(--s6)">Regla:</strong> Creo que / Pienso que + <span class="ind-pill">indicativo</span> · No creo que / No pienso que + <span class="subj-pill">subjuntivo</span>
+      <br><span style="color:var(--muted)">Yo creo que no <span class="ind-pill">eres</span> fea ≠ Yo no creo que <span class="subj-pill">seas</span> fea</span>
+    </div>
+
+    <!-- General vs particular (slide 13) -->
+    <div style="font-size:.78rem;font-weight:900;text-transform:uppercase;color:var(--s5);letter-spacing:.07em;margin-bottom:8px">2. Referencia definida vs. indefinida (el/la vs. un/una)</div>
+    <div class="vs-row" style="margin-bottom:14px">
+      <div class="vs-box" style="background:var(--indb);border:1.5px solid var(--indd)">
+        <div class="vs-label" style="color:#6ee7b7">✅ INDICATIVO — sabemos quién/cuál</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Quiero comprar <strong>el</strong> libro que <span class="ind-pill">es</span> de ciencia ficción.<br>
+          Estoy buscando a <strong>la</strong> persona que <span class="ind-pill">sabe</span> hablar español.<br>
+          Tengo un profesor que <span class="ind-pill">explica</span> muy bien.
+        </div>
+      </div>
+      <div class="vs-box" style="background:var(--subjb);border:1.5px solid var(--subjd)">
+        <div class="vs-label" style="color:#c4b5fd">⚡ SUBJUNTIVO — cualquiera que cumpla</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Quiero comprar <strong>un</strong> libro que <span class="subj-pill">sea</span> de ciencia ficción.<br>
+          Estoy buscando a <strong>una</strong> persona que <span class="subj-pill">sepa</span> hablar español.<br>
+          Busco un profesor que <span class="subj-pill">explique</span> muy bien.
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:9px 14px;font-size:.83rem;margin-bottom:16px">
+      💡 <strong style="color:var(--s6)">el / la / los / las</strong> → sabes exactamente cuál es → <span class="ind-pill">indicativo</span><br>
+      <strong style="color:var(--s6)">un / una</strong> → cualquiera que cumpla una condición → <span class="subj-pill">subjuntivo</span>
+    </div>
+
+    <!-- Cuando habitual vs futuro (slide 14) -->
+    <div style="font-size:.78rem;font-weight:900;text-transform:uppercase;color:var(--s5);letter-spacing:.07em;margin-bottom:8px">3. Cuando / tan pronto como — habitual vs. futuro</div>
+    <div class="vs-row" style="margin-bottom:14px">
+      <div class="vs-box" style="background:var(--indb);border:1.5px solid var(--indd)">
+        <div class="vs-label" style="color:#6ee7b7">✅ INDICATIVO — acción habitual o pasada</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Cuando <span class="ind-pill">voy</span> a México, como muchos tacos.<br>
+          Cuando <span class="ind-pill">llegas</span> a casa, tomas una siesta.<br>
+          Cuando <span class="ind-pill">llega</span>, siempre trae algo.
+        </div>
+      </div>
+      <div class="vs-box" style="background:var(--subjb);border:1.5px solid var(--subjd)">
+        <div class="vs-label" style="color:#c4b5fd">⚡ SUBJUNTIVO — acción futura o hipotética</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Cuando <span class="subj-pill">vaya</span> a México, comeré muchos tacos.<br>
+          Cuando <span class="subj-pill">llegues</span> a casa, toma una siesta.<br>
+          Cuando <span class="subj-pill">llegue</span>, traerá algo.
+        </div>
+      </div>
+    </div>
+
+    <!-- Aunque (slide 15) -->
+    <div style="font-size:.78rem;font-weight:900;text-transform:uppercase;color:var(--s5);letter-spacing:.07em;margin-bottom:8px">4. Aunque — hecho conocido vs. hipótesis</div>
+    <div class="vs-row" style="margin-bottom:14px">
+      <div class="vs-box" style="background:var(--indb);border:1.5px solid var(--indd)">
+        <div class="vs-label" style="color:#6ee7b7">✅ INDICATIVO — hecho conocido</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Aunque <span class="ind-pill">estudié</span>, no pasé el examen.<br>
+          <span style="color:var(--muted);font-size:.76rem">Even though I studied (fact, it happened)</span><br><br>
+          Aunque me <span class="ind-pill">dijiste</span> que estudiara, no lo hice.<br>
+          <span style="color:var(--muted);font-size:.76rem">Even though you told me (past fact)</span>
+        </div>
+      </div>
+      <div class="vs-box" style="background:var(--subjb);border:1.5px solid var(--subjd)">
+        <div class="vs-label" style="color:#c4b5fd">⚡ SUBJUNTIVO — hipótesis</div>
+        <div class="vs-ex" style="font-size:.85rem">
+          Aunque <span class="subj-pill">estudies</span>, no pasarás el examen.<br>
+          <span style="color:var(--muted);font-size:.76rem">Even if you study (we don't know yet)</span><br><br>
+          Aunque me <span class="subj-pill">digas</span> que estudie, no lo haré.<br>
+          <span style="color:var(--muted);font-size:.76rem">Even if you tell me (hypothetical)</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:9px 14px;font-size:.83rem;margin-bottom:6px">
+      💡 <strong style="color:#c4b5fd">aunque + <span class="ind-pill">indicativo</span></strong> = sabemos que pasó / es un hecho · <strong style="color:#c4b5fd">aunque + <span class="subj-pill">subjuntivo</span></strong> = aún no sabemos / hipótesis
+    </div>
+  </div>
+
+  <!-- SLIDE 17: CONJUNCIONES SIEMPRE -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:var(--s6)">🔗 Conjunciones que siempre piden subjuntivo</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px;margin-bottom:12px">
+      ${[['antes de que','before'],['para que','so that'],['a menos que','unless'],['sin que','without'],['con tal de que','provided that'],['en caso de que','in case that'],['a no ser que','unless'],['aunque (hip.)','even if (hyp.)']].map(([es,en])=>`<div style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:9px 13px"><div style="font-weight:800;color:var(--s6)">${es}</div><div style="font-size:.74rem;color:var(--muted);margin-top:2px">${en}</div></div>`).join('')}
+    </div>
+    <div class="trigger-ex">Antes de que te <span class="subj-pill">vayas</span>, di adiós. · Lo haré para que tú <span class="subj-pill">puedas</span> descansar.</div>
+  </div>
+
+  <!-- SLIDE 19: TAL VEZ / QUIZA / OJALA -->
+  <div class="expl-section">
+    <div class="expl-h" style="color:var(--s2)">🌀 Adverbios de probabilidad</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px;margin-bottom:12px">
+      <div style="background:var(--s2b);border:1px solid var(--s2d);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--s2);margin-bottom:4px">tal vez</div>
+        <div style="font-size:.78rem;color:var(--muted)">maybe — puede ir con subj. o ind.</div>
+        <div style="font-size:.78rem;color:#c4b5fd;margin-top:4px">Tal vez <span class="subj-pill">vayamos</span> juntos.</div>
+      </div>
+      <div style="background:var(--s2b);border:1px solid var(--s2d);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--s2);margin-bottom:4px">quizá(s)</div>
+        <div style="font-size:.78rem;color:var(--muted)">perhaps — puede ir con subj. o ind.</div>
+        <div style="font-size:.78rem;color:#c4b5fd;margin-top:4px">Quizás <span class="subj-pill">llueva</span> esta tarde.</div>
+      </div>
+      <div style="background:var(--s2b);border:1px solid var(--s2d);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--s2);margin-bottom:4px">posiblemente</div>
+        <div style="font-size:.78rem;color:var(--muted)">possibly — normalmente + subj.</div>
+        <div style="font-size:.78rem;color:#c4b5fd;margin-top:4px">Posiblemente <span class="subj-pill">vengan</span>.</div>
+      </div>
+      <div style="background:var(--s1b);border:1px solid var(--s1d);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--s1);margin-bottom:4px">ojalá</div>
+        <div style="font-size:.78rem;color:var(--muted)">hopefully / I wish — siempre + subjuntivo</div>
+        <div style="font-size:.78rem;color:#c4b5fd;margin-top:4px">¡Ojalá <span class="subj-pill">puedas</span> venir!</div>
+      </div>
+      <div style="background:var(--indb);border:1px solid var(--indd);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:#6ee7b7;margin-bottom:4px">a lo mejor</div>
+        <div style="font-size:.78rem;color:var(--muted)">maybe — siempre + indicativo</div>
+        <div style="font-size:.78rem;color:#6ee7b7;margin-top:4px">A lo mejor <span class="ind-pill">vienen</span> mañana.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-cyan" onclick="goEx(1)">→ Conjugation practice</button>
+    <button class="btn btn-ghost" onclick="goEx(4)">→ Subjuntivo vs Indicativo</button>
+  </div>
+</div>`;
+}
+
+/* ══════════════════════════════════
+   EX 1 — CONJUGA (flashcards, 30)
+══════════════════════════════════ */
+const CONJ_CARDS=[
+  {type:'reg',verb:'hablar',person:'yo',form:'hable',note:'habl- + e (−AR → E endings)'},
+  {type:'reg',verb:'hablar',person:'tú',form:'hables',note:'habl- + es'},
+  {type:'reg',verb:'hablar',person:'él/ella',form:'hable',note:'habl- + e (same as yo!)'},
+  {type:'reg',verb:'hablar',person:'nosotros',form:'hablemos',note:'habl- + emos'},
+  {type:'reg',verb:'hablar',person:'ellos',form:'hablen',note:'habl- + en'},
+  {type:'reg',verb:'comer',person:'yo',form:'coma',note:'com- + a (−ER → A endings)'},
+  {type:'reg',verb:'comer',person:'tú',form:'comas',note:'com- + as'},
+  {type:'reg',verb:'comer',person:'ellos',form:'coman',note:'com- + an'},
+  {type:'reg',verb:'vivir',person:'yo',form:'viva',note:'viv- + a (−IR → A endings, same as −ER)'},
+  {type:'reg',verb:'vivir',person:'tú',form:'vivas',note:'viv- + as'},
+  {type:'reg',verb:'trabajar',person:'tú',form:'trabajes',note:'trabaj- + es (−AR → es)'},
+  {type:'reg',verb:'estudiar',person:'ellos',form:'estudien',note:'estudi- + en'},
+  {type:'reg',verb:'beber',person:'tú',form:'bebas',note:'beb- + as (−ER → as)'},
+  {type:'reg',verb:'escribir',person:'yo',form:'escriba',note:'escrib- + a (−IR → a)'},
+  {type:'reg',verb:'llegar',person:'tú',form:'llegues',note:'llegu- + es (g→gu before e — spelling change!)'},
+  {type:'irr',verb:'ser',person:'yo / él',form:'sea',note:'Completely irregular: sea, seas, sea, seamos, sean'},
+  {type:'irr',verb:'ser',person:'tú',form:'seas',note:'ser → seas. Remember: se- root for all forms'},
+  {type:'irr',verb:'estar',person:'yo / él',form:'esté',note:'Irregular with accent: esté, estés, esté, estemos, estén'},
+  {type:'irr',verb:'estar',person:'tú',form:'estés',note:'estar → estés (note accent on E!)'},
+  {type:'irr',verb:'ir',person:'yo / él',form:'vaya',note:'Completely irregular: vaya, vayas, vaya, vayamos, vayan'},
+  {type:'irr',verb:'ir',person:'tú',form:'vayas',note:'ir → vayas. Root = vay- (not "ir" or "fu")'},
+  {type:'irr',verb:'haber',person:'(impersonal)',form:'haya',note:'hay → haya. "Es posible que haya..." Very common!'},
+  {type:'irr',verb:'tener',person:'yo / él',form:'tenga',note:'Go-go: tengo → teng- → tenga'},
+  {type:'irr',verb:'hacer',person:'yo / él',form:'haga',note:'Go-go: hago → hag- → haga'},
+  {type:'irr',verb:'venir',person:'yo / él',form:'venga',note:'Go-go: vengo → veng- → venga'},
+  {type:'irr',verb:'poner',person:'yo / él',form:'ponga',note:'Go-go: pongo → pong- → ponga'},
+  {type:'irr',verb:'saber',person:'yo / él',form:'sepa',note:'Irregular — NOT "saba." sepa, sepas, sepa, sepamos, sepan'},
+  {type:'irr',verb:'dar',person:'yo / él',form:'dé',note:'Irregular and short: dé, des, dé, demos, den (accent on dé!)'},
+  {type:'irr',verb:'poder',person:'yo / él',form:'pueda',note:'Stem change o→ue: pueda, puedas, pueda, podamos, puedan'},
+  {type:'irr',verb:'querer',person:'yo / él',form:'quiera',note:'Stem change e→ie: quiera, quieras, quiera, queramos, quieran'},
+];
+
+function getFC(){return fcFilter==='all'?CONJ_CARDS:CONJ_CARDS.filter(c=>c.type===fcFilter);}
+function renderConj(){const cards=getFC();if(fcIdx>=cards.length)fcIdx=0;fcFlipped=false;renderConjCard(cards);}
+function renderConjCard(cards){
+  if(!cards.length)return;
+  const item=cards[fcIdx];const pct=Math.round((fcIdx+1)/cards.length*100);
+  const tc=item.type==='reg'?'#6ee7b7':'#c4b5fd';
+  const fbtns=[{id:'all',lbl:'All ('+CONJ_CARDS.length+')'},{id:'reg',lbl:'✅ Regular'},{id:'irr',lbl:'⚡ Irregular'}].map(f=>`<button class="fc-fbtn${fcFilter===f.id?' active':''}" onclick="setConj('${f.id}')">${f.lbl}</button>`).join('');
+  const hasAudio=!!window.speechSynthesis;
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">🔧 Conjuga — ${CONJ_CARDS.length} flashcards</div>
+  <div class="ex-instr">Front: verb + person. Flip to see the <em>present subjunctive</em> form and the rule. Master regulars first, then the 9 key irregulars!</div>
+  <div class="fc-filter">${fbtns}</div>
+  <div class="fc-wrap">
+    <div class="fc-prow">
+      <span class="fc-cnt">${fcIdx+1}/${cards.length}</span>
+      <div class="fc-trk"><div class="fc-fil" style="width:${pct}%"></div></div>
+      <span class="fc-cnt" style="color:${tc}">${item.type==='reg'?'✅ Regular':'⚡ Irregular'}</span>
+    </div>
+    <div class="fc-card${fcFlipped?' flipped':''}" id="fcCard" onclick="flipConj()">
+      <div class="fc-inner">
+        <div class="fc-front">
+          <span style="font-size:.65rem;font-weight:900;text-transform:uppercase;color:${tc};letter-spacing:.08em">${item.type==='reg'?'Regular':'Irregular'}</span>
+          <div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:${tc}">${item.verb}</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--muted)">${item.person}</div>
+          <div style="margin-top:auto;font-size:.75rem;color:var(--muted2)">¿Forma de subjuntivo? · 👆 Click to flip</div>
+        </div>
+        <div class="fc-back">
+          <span style="font-size:.65rem;font-weight:900;text-transform:uppercase;color:${tc};letter-spacing:.08em">${item.type==='reg'?'Regular':'Irregular'}</span>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="font-family:var(--display);font-size:2.2rem;font-weight:900;color:${tc}">${item.form}</div>
+            ${hasAudio?`<button class="btn-audio" onclick="event.stopPropagation();speak('${item.form}',this)" style="margin-left:auto">🔊</button>`:''}
+          </div>
+          <div style="font-size:.85rem;color:var(--muted2);padding:10px 14px;background:rgba(255,255,255,.05);border-radius:10px;line-height:1.7">💡 ${item.note}</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="btn btn-ghost" onclick="prevConj()" ${fcIdx===0?'disabled':''}>← Prev</button>
+      <button class="btn btn-ghost" onclick="flipConj()">↺ Flip</button>
+      <button class="btn btn-cyan" onclick="nextConj()" ${fcIdx===cards.length-1?'disabled':''}>Next →</button>
+    </div>
+  </div></div>`;
+}
+function flipConj(){fcFlipped=!fcFlipped;document.getElementById('fcCard')?.classList.toggle('flipped',fcFlipped);}
+function nextConj(){fcIdx=Math.min(getFC().length-1,fcIdx+1);fcFlipped=false;renderConj();}
+function prevConj(){fcIdx=Math.max(0,fcIdx-1);fcFlipped=false;renderConj();}
+function setConj(f){fcFilter=f;fcIdx=0;fcFlipped=false;renderConj();}
+
+/* ══════════════════════════════════
+   EX 2 — TRIGGERS MC (22)
+   Mixed: subjuntivo AND indicativo
+   Based directly on PPTX slide 22 practice examples
+   + extended with contrasts from slides 12-15
+══════════════════════════════════ */
+const TRIG=[
+  {cat:'🔥 Deseo',trigger:'querer que',
+   q:'Quiero que él ___ (ir) a la tienda.',en:'I want him to go to the store.',
+   a:'vaya',wrong:['va','irá','fue'],
+   x:'SUBJUNTIVO. "Querer que" = desire trigger. ir is irregular: vaya, vayas, vaya, vayamos, vayan. NOT "va" (indicativo) or "irá" (future).'},
+  {cat:'💜 Emoción',trigger:'me sorprender que',
+   q:'Me sorprende que siempre ___ (ganar) la lotería.',en:'It surprises me that you always win the lottery.',
+   a:'ganes',wrong:['ganas','ganarás','ganaste'],
+   x:'SUBJUNTIVO. "Sorprender que" = emotion trigger. ganar → gan- + es = "ganes." The surprise at someone else\'s action triggers subjuntivo.'},
+  {cat:'💜 Emoción',trigger:'me gustar que',
+   q:'Me gusta que tú ___ (ser) muy divertido.',en:'I like that you are very funny.',
+   a:'seas',wrong:['eres','fuiste','serás'],
+   x:'SUBJUNTIVO. "Me gusta que" = emotion trigger (different subject: me gusta / tú eres). ser → seas. Even though you REALLY ARE funny, the emotional reaction triggers subjuntivo.'},
+  {cat:'❓ Duda',trigger:'dudar que',
+   q:'Dudo que tú ___ (ser) buen cocinero.',en:'I doubt you are a good cook.',
+   a:'seas',wrong:['eres','fuiste','serás'],
+   x:'SUBJUNTIVO. "Dudar que" = doubt trigger. ser → sea/seas. The doubt turns the statement into subjuntivo territory.'},
+  {cat:'⭐ Impersonal',trigger:'es importante que',
+   q:'Es importante que (tú) ___ (estudiar) antes del examen.',en:'It is important that you study before the exam.',
+   a:'estudies',wrong:['estudias','estudiarás','estudiar'],
+   x:'SUBJUNTIVO. "Es importante que" = impersonal expression. estudiar → estudi- + es = "estudies." Compare: "Es importante estudiar" (same subject → infinitive).'},
+  {cat:'🔥 Deseo',trigger:'necesitar que',
+   q:'Necesito que ella ___ (hacer) la comida.',en:'I need her to make the food.',
+   a:'haga',wrong:['hace','hará','hizo'],
+   x:'SUBJUNTIVO. "Necesitar que" = wish/need trigger. hacer → go-go: hago → hag- → haga. Also note this is from the PPTX practice slide!'},
+  {cat:'✅ Indicativo',trigger:'creer que (positivo)',
+   q:'Creo que el equipo ___ (ser) muy bueno.',en:'I think the team is very good.',
+   a:'es',wrong:['sea','fuera','será'],
+   x:'INDICATIVO. "Creer que" (affirmative) = belief/certainty = indicativo. You believe it is TRUE. The moment you negate it ("no creo que sea"), it switches to subjuntivo.'},
+  {cat:'✅ Indicativo',trigger:'pensar que (positivo)',
+   q:'Pienso que él ___ (ser) buen cocinero.',en:'I think he is a good cook.',
+   a:'es',wrong:['sea','fuera','sería'],
+   x:'INDICATIVO. "Pensar que" (affirmative) = belief = indicativo. Compare: "No pienso que SEA" (doubt → subj) vs "Pienso que ES" (belief → ind).'},
+  {cat:'❓ Negación',trigger:'no creer que',
+   q:'No creo que tú ___ (ser) muy bonita.',en:'I do not think you are very pretty.',
+   a:'seas',wrong:['eres','fuiste','serás'],
+   x:'SUBJUNTIVO. "No creer que" = denial/doubt = subjuntivo. ser → seas. KEY PATTERN: creo que ES / no creo que SEA. The negation flips the mood.'},
+  {cat:'✅ Indicativo',trigger:'cuando + pasado habitual',
+   q:'Cuando ___ (ir) a México, comía muchos tacos.',en:'When I used to go to Mexico, I ate many tacos.',
+   a:'iba',wrong:['vaya','fuera','voy'],
+   x:'INDICATIVO. "Cuando" + PAST/HABITUAL = indicativo. This is a recurring past habit — it REALLY HAPPENED. "Cuando iba" (imperfecto, habitual action). Only "cuando + FUTURE" triggers subjuntivo.'},
+  {cat:'⏰ Cuando futuro',trigger:'cuando + futuro',
+   q:'Cuando ___ (llegar) a casa, toma una siesta.',en:'When you arrive home, take a nap.',
+   a:'llegues',wrong:['llegas','llegaste','llegarás'],
+   x:'SUBJUNTIVO. "Cuando" + FUTURE event = subjuntivo. The arrival has NOT happened yet. llegar → llegu- + es = "llegues" (g→gu spelling change).'},
+  {cat:'🔗 Conjunción',trigger:'antes de que',
+   q:'Antes de que te ___ (ir), di adiós.',en:'Before you leave, say goodbye.',
+   a:'vayas',wrong:['vas','fuiste','irás'],
+   x:'SUBJUNTIVO. "Antes de que" always triggers subjuntivo — the event has not happened yet. ir → vayas (irregular, from vaya pattern).'},
+  {cat:'🔗 Conjunción',trigger:'para que',
+   q:'Lo haré para que tú ___ (poder) descansar.',en:'I will do it so that you can rest.',
+   a:'puedas',wrong:['puedes','podrás','pudiste'],
+   x:'SUBJUNTIVO. "Para que" = purpose = always subjuntivo. poder (o→ue) → pued- + as = "puedas." Purpose clauses always use subjuntivo.'},
+  {cat:'🌀 Probabilidad',trigger:'ojalá — siempre subjuntivo',
+   q:'¡Ojalá que ___ (poder) venir a mi fiesta!',en:'Hopefully you can come to my party!',
+   a:'puedas',wrong:['puedes','podrás','pudiste'],
+   x:'SUBJUNTIVO. "Ojalá" ALWAYS triggers subjuntivo — no exceptions. poder (o→ue) → pued- + as = "puedas."'},
+  {cat:'🌀 Probabilidad',trigger:'tal vez — con subjuntivo',
+   q:'Tal vez ___ (ir) juntos mañana.',en:'Maybe we will go together tomorrow.',
+   a:'vayamos',wrong:['vamos','iremos','fuimos'],
+   x:'SUBJUNTIVO. "Tal vez" can take subjuntivo (more uncertainty) or indicativo (less uncertainty). With subjuntivo = expressing more doubt. ir → vayamos.'},
+  {cat:'🔀 Aunque hipótesis',trigger:'aunque + subjuntivo',
+   q:'Aunque ___ (estudiar), no pasarás el examen.',en:'Even if you study, you will not pass the exam.',
+   a:'estudies',wrong:['estudias','estudiaste','estudiarás'],
+   x:'SUBJUNTIVO. "Aunque" + hypothesis = subjuntivo. We do NOT know if the person will study — it is hypothetical. Compare: "Aunque estudié" (past fact → indicativo).'},
+  {cat:'✅ Aunque hecho',trigger:'aunque + indicativo',
+   q:'Aunque ___ (estudiar), no pasé el examen.',en:'Even though I studied, I did not pass the exam.',
+   a:'estudié',wrong:['estudie','estudiaré','estudiar'],
+   x:'INDICATIVO. "Aunque" + known fact = indicativo. The person DID study — it happened. "Estudié" (pretérito). Fact = indicativo.'},
+  {cat:'📍 Ref. indefinida',trigger:'buscar a alguien que (hipotético)',
+   q:'Busco un profesor que ___ (explicar) muy bien.',en:'I am looking for a teacher who explains very well.',
+   a:'explique',wrong:['explica','explicará','explicó'],
+   x:'SUBJUNTIVO. Indefinite/hypothetical reference: you are looking for a teacher (could be anyone) who has this quality. Unknown/unidentified person → subjuntivo. explicar → expliqu- + e = "explique."'},
+  {cat:'📍 Ref. definida',trigger:'tener a alguien que (real)',
+   q:'Tengo un profesor que ___ (explicar) muy bien.',en:'I have a teacher who explains very well.',
+   a:'explica',wrong:['explique','explicará','explicó'],
+   x:'INDICATIVO. Definite/real reference: you have a SPECIFIC, REAL teacher who actually does this. Known, identified person → indicativo. "Explica" (present indicativo).'},
+  {cat:'⭐ Impersonal',trigger:'es posible que',
+   q:'Es posible que ___ (haber) tráfico en la autopista.',en:'It is possible there will be traffic on the highway.',
+   a:'haya',wrong:['hay','hubo','habrá'],
+   x:'SUBJUNTIVO. "Es posible que" = uncertainty = subjuntivo. haber (impersonal) → haya. "Es verdad que HAY" (certainty → ind) vs "Es posible que HAYA" (uncertainty → subj).'},
+  {cat:'✅ Indicativo',trigger:'es verdad que',
+   q:'Es verdad que en México ___ (haber) mucho chile.',en:'It is true that in Mexico there is a lot of chili.',
+   a:'hay',wrong:['haya','hubiera','habrá'],
+   x:'INDICATIVO. "Es verdad que" = affirmation of reality = indicativo. The truth CONFIRMS reality. Compare: "Es posible que HAYA" vs "Es verdad que HAY."'},
+  {cat:'🔗 Conjunción',trigger:'a menos que',
+   q:'Te ayudo a menos que tú no ___ (querer) mi ayuda.',en:'I will help you unless you do not want my help.',
+   a:'quieras',wrong:['quieres','querrás','quisiste'],
+   x:'SUBJUNTIVO. "A menos que" = unless = always subjuntivo. querer (e→ie) → quier- + as = "quieras."'},,
+{cat:'Emoción',trigger:'sentir que',
+   q:'Siento que mi amigo no ___ (poder) venir hoy.',en:'I feel sorry that my friend cannot come today.',
+   a:'pueda',wrong:['puede','podría','podrá'],
+   x:'SUBJUNTIVO. "Sentir que" = emotional regret trigger. poder (o→ue) → pued- + a = "pueda."'},
+  {cat:'Indicativo',trigger:'ver que',
+   q:'Veo que tú ya ___ (saber) hablar español muy bien.',en:'I see that you already know how to speak Spanish very well.',
+   a:'sabes',wrong:['sepas','supieras','sabrás'],
+   x:'INDICATIVO. "Ver que" = perception of reality = indicativo. You are observing something REAL. saber → sabes.'},
+  {cat:'Impersonal',trigger:'es raro que',
+   q:'Es raro que ella nunca ___ (llegar) tarde.',en:'It is strange that she never arrives late.',
+   a:'llegue',wrong:['llega','llegará','llegó'],
+   x:'SUBJUNTIVO. "Es raro que" = impersonal expression. llegar → llegu- + e = "llegue" (g→gu).'},
+  {cat:'Indicativo',trigger:'estar claro que',
+   q:'Está claro que ellos ___ (tener) mucha experiencia.',en:'It is clear that they have a lot of experience.',
+   a:'tienen',wrong:['tengan','tuvieran','tendrán'],
+   x:'INDICATIVO. "Estar claro que" = certainty = indicativo. It CONFIRMS reality. Like "es verdad que, es obvio que" — all assert facts → indicativo.'},
+  {cat:'Deseo',trigger:'preferir que',
+   q:'Prefiero que nosotros ___ (ir) al mercado hoy.',en:'I prefer that we go to the market today.',
+   a:'vayamos',wrong:['vamos','iremos','fuimos'],
+   x:'SUBJUNTIVO. "Preferir que" = desire/preference trigger. ir → vayamos (completely irregular).'},
+  {cat:'Ref. definida',trigger:'hay alguien que (conocido)',
+   q:'Hay alguien aquí que ___ (saber) el número de Ana.',en:'There is someone here who knows Ana\'s number.',
+   a:'sabe',wrong:['sepa','sabría','supo'],
+   x:'INDICATIVO. "Hay alguien que" refers to a REAL, SPECIFIC person who is present. Known/identified = indicativo. Compare: "Busco a alguien que SEPA" (hypothetical → subj).'},
+  {cat:'Conjunción',trigger:'en caso de que',
+   q:'Lleva paraguas en caso de que ___ (llover).',en:'Take an umbrella in case it rains.',
+   a:'llueva',wrong:['llueve','llovió','lloverá'],
+   x:'SUBJUNTIVO. "En caso de que" = always subjuntivo. llover (o→ue) → lluev- + a = "llueva."'},
+  {cat:'Indicativo',trigger:'notar que',
+   q:'Noto que hoy tú ___ (estar) muy cansado.',en:'I notice that today you are very tired.',
+   a:'estás',wrong:['estés','estuvieras','estarás'],
+   x:'INDICATIVO. "Notar que" = observation of reality = indicativo. You notice a REAL current state. estar → estás.'},
+  {cat:'Deseo',trigger:'exigir que',
+   q:'El jefe exige que todos ___ (llegar) a las 8 en punto.',en:'The boss demands that everyone arrive at 8 sharp.',
+   a:'lleguen',wrong:['llegan','llegarán','llegaron'],
+   x:'SUBJUNTIVO. "Exigir que" = demand/request trigger. llegar → llegu- + en = "lleguen."'},
+  {cat:'Duda',trigger:'no estar seguro de que',
+   q:'No estoy seguro de que ___ (ser) la mejor decisión.',en:'I am not sure that it is the best decision.',
+   a:'sea',wrong:['es','fue','sería'],
+   x:'SUBJUNTIVO. "No estar seguro de que" = uncertainty = subjuntivo. ser → sea (yo/él form).'},
+  {cat:'Indicativo',trigger:'pensar que (afirmativo)',
+   q:'Pienso que esta ciudad ___ (tener) mucho potencial.',en:'I think this city has a lot of potential.',
+   a:'tiene',wrong:['tenga','tuviera','tendrá'],
+   x:'INDICATIVO. "Pensar que" (affirmative) = belief = indicativo. You are asserting it is TRUE.'},
+  {cat:'Aunque hipótesis',trigger:'aunque (futuro)',
+   q:'Aunque ___ (hacer) frío, voy a salir.',en:'Even if it is cold, I am going to go out.',
+   a:'haga',wrong:['hace','hizo','hará'],
+   x:'SUBJUNTIVO. "Aunque" + hypothesis/future = subjuntivo. We do not know yet if it will be cold. hacer → hago → hag- → haga (go-go).'},
+  {cat:'Probabilidad',trigger:'quizás',
+   q:'Quizás mañana ___ (haber) una reunión.',en:'Perhaps tomorrow there will be a meeting.',
+   a:'haya',wrong:['hay','hubo','habrá'],
+   x:'SUBJUNTIVO. "Quizás" can take subjuntivo or indicativo; with subjuntivo = more uncertainty. haber → haya.'},
+];
+
+function renderTriggers(){
+  mc1Ans={};
+  const html=TRIG.map((item,i)=>{
+    const opts=seededShuffle([item.a,...item.wrong],i*11+3);
+    const done=mc1Ans[i]!==undefined;
+    const btns=opts.map(o=>{
+      let cls='mc-opt';if(done){if(o===item.a)cls+=' mshow';else if(mc1Ans[i]===o&&o!==item.a)cls+=' merr';}
+      return `<button class="${cls}" onclick="answerTrig(${i},'${o.replace(/'/g,"\\'")}','${item.a.replace(/'/g,"\\'")}',this)" ${done?'disabled':''}>${o}</button>`;
+    }).join('');
+    return `<div class="mc-card${done?(mc1Ans[i]===item.a?' ok':' err'):''}" id="mc1c${i}">
+      <div class="mc-top"><span class="mc-num">${i+1}</span>
+        <div style="flex:1">
+          <div class="mc-q">${item.q}</div>
+          <div style="font-size:.75rem;color:var(--muted2);font-style:italic;margin-top:3px">${item.en}</div>
+        </div>
+      </div>
+      <div class="mc-opts">${btns}</div>
+      <div class="mc-exp${done?' show':''}" id="mc1e${i}">${done?(mc1Ans[i]===item.a?'✓ ':'✗ ')+item.x:''}</div>
+    </div>`;
+  }).join('');
+  const done=Object.keys(mc1Ans).length;
+  const ok=TRIG.filter((_,i)=>mc1Ans[i]===TRIG[i].a).length;
+  const tot=TRIG.length;
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">🎯 Triggers — ${tot} sentences</div>
+  <div class="ex-instr">Choose the correct verb form. Some need <span class="subj-pill">subjuntivo</span>, some need <span class="ind-pill">indicativo</span>. The trigger word is shown above each sentence. This includes ALL the contrast patterns from the YMF curriculum!</div>
+  <div class="score-bar"><div class="sc"><span class="l">Total</span><span class="v">${tot}</span></div><div class="sc"><span class="l">OK</span><span class="v g" id="m1_ok">${ok}</span></div><div class="sc"><span class="l">Miss</span><span class="v b" id="m1_err">${done-ok}</span></div><div class="prog-w"><div class="prog-l"><span id="m1_pct">${Math.round(done/tot*100)}%</span></div><div class="prog-t"><div class="prog-f" id="m1_pg" style="width:${Math.round(done/tot*100)}%"></div></div></div></div>
+  <div class="mc-list">${html}</div>
+  <div class="fb" id="m1_fb"></div>
+  <div class="actions"><button class="btn btn-ghost" onclick="mc1Ans={};renderTriggers()">↺ Reset</button></div></div>`;
+}
+function answerTrig(qi,chosen,correct,btn){
+  if(mc1Ans[qi]!==undefined)return;
+  const isOk=chosen===correct;mc1Ans[qi]=chosen;
+  document.getElementById('mc1c'+qi).classList.add(isOk?'ok':'err');
+  btn.parentElement.querySelectorAll('.mc-opt').forEach(b=>{b.disabled=true;if(b.textContent===correct)b.classList.add('mshow');else if(b===btn&&!isOk)b.classList.add('merr');});
+  const e=document.getElementById('mc1e'+qi);if(e){e.classList.add('show');e.innerHTML=(isOk?'✓ ':'✗ ')+TRIG[qi].x;}
+  const done=Object.keys(mc1Ans).length;const ok=TRIG.filter((_,i)=>mc1Ans[i]===TRIG[i].a).length;
+  document.getElementById('m1_ok').textContent=ok;document.getElementById('m1_err').textContent=done-ok;
+  document.getElementById('m1_pct').textContent=Math.round(done/TRIG.length*100)+'%';
+  document.getElementById('m1_pg').style.width=Math.round(done/TRIG.length*100)+'%';
+  if(done===TRIG.length){const pct=Math.round(ok/done*100);const fb=document.getElementById('m1_fb');fb.className='fb show '+(pct>=80?'ok':'partial');fb.innerHTML=`${pct>=80?'🏆':'📖'} <strong>${ok}/${done}.</strong> ${pct>=80?'¡Excelente!':'Review the Explicación and try again.'}`;}
+}
+
+/* ══════════════════════════════════
+   EX 3 — COMPLETA (18, all subjuntivo)
+══════════════════════════════════ */
+const FILLS=[
+  {trigger:'querer que',ctx:'Deseo — slide 7',
+   q:'Mi mamá quiere que yo ___ (estudiar) medicina.',en:'My mom wants me to study medicine.',
+   opts:['estudie','estudio','estudié','estudiaré'],a:0,
+   x:'"Querer que" + different subject. estudiar → estudi- + e = "estudie."'},
+  {trigger:'ojalá',ctx:'Deseo especial',
+   q:'¡Ojalá ___ (hacer) buen tiempo este fin de semana!',en:'Hopefully the weather will be nice this weekend!',
+   opts:['haga','hace','hizo','hará'],a:0,
+   x:'"Ojalá" ALWAYS triggers subjuntivo. hacer → hago → hag- → haga (go-go pattern).'},
+  {trigger:'es importante que',ctx:'Expresión impersonal — slide 10',
+   q:'Es importante que (tú) ___ (ser) puntual.',en:'It is important that you be punctual.',
+   opts:['seas','eres','fuiste','serías'],a:0,
+   x:'"Es importante que" = impersonal. ser → sea/seas (completely irregular).'},
+  {trigger:'esperar que',ctx:'Deseo / esperanza',
+   q:'Espero que tú ___ (venir) a mi cumpleaños.',en:'I hope you come to my birthday.',
+   opts:['vengas','vienes','vendrás','viniste'],a:0,
+   x:'"Esperar que" = wish. venir → vengo → veng- → vengas (go-go).'},
+  {trigger:'recomendar que',ctx:'Petición — slide 7',
+   q:'Te recomiendo que ___ (probar) los tamales de elote.',en:'I recommend you try the sweet corn tamales.',
+   opts:['pruebes','pruebas','probaste','probarás'],a:0,
+   x:'"Recomendar que" = request trigger. probar (o→ue) → prueb- + es = "pruebes."'},
+  {trigger:'no creer que',ctx:'Negación — slide 12',
+   q:'No creo que él ___ (tener) tiempo para eso.',en:'I do not think he has time for that.',
+   opts:['tenga','tiene','tuvo','tendrá'],a:0,
+   x:'"No creer que" = doubt/denial. tener → tengo → teng- → tenga (go-go).'},
+  {trigger:'cuando + futuro',ctx:'Conjunción temporal — slide 14',
+   q:'Llámame cuando ___ (llegar) al aeropuerto.',en:'Call me when you arrive at the airport.',
+   opts:['llegues','llegas','llegaste','llegarás'],a:0,
+   x:'"Cuando" + future event = subjuntivo. llegar → llegu- + es = "llegues" (g→gu).'},
+  {trigger:'para que',ctx:'Conjunción de propósito — slide 17',
+   q:'Lo haré para que tú ___ (poder) descansar.',en:'I will do it so that you can rest.',
+   opts:['puedas','puedes','podrás','pudiste'],a:0,
+   x:'"Para que" = always subjuntivo. poder (o→ue) → pued- + as = "puedas."'},
+  {trigger:'me molesta que',ctx:'Emoción — slide 8',
+   q:'Me molesta que siempre ___ (llegar) tarde.',en:'It bothers me that you always arrive late.',
+   opts:['llegues','llegas','llegaste','llegarás'],a:0,
+   x:'"Me molesta que" = emotion. llegar → llegu- + es = "llegues."'},
+  {trigger:'dudar que',ctx:'Duda — slide 9',
+   q:'Dudo que ___ (haber) mesa disponible sin reservación.',en:'I doubt there will be a table without a reservation.',
+   opts:['haya','hay','hubo','habrá'],a:0,
+   x:'"Dudar que" = doubt. haber → haya (impersonal). "Espero que haya" / "es posible que haya" same form.'},
+  {trigger:'antes de que',ctx:'Conjunción — slide 17',
+   q:'Avísame antes de que ___ (salir) de casa.',en:'Let me know before you leave the house.',
+   opts:['salgas','sales','saliste','saldrás'],a:0,
+   x:'"Antes de que" = always subjuntivo. salir → salgo → salg- → salgas (go-go).'},
+  {trigger:'es mejor que',ctx:'Expresión impersonal',
+   q:'Es mejor que ___ (ir) temprano para evitar el tráfico.',en:'It is better to go early to avoid traffic.',
+   opts:['vayas','vas','fuiste','irás'],a:0,
+   x:'"Es mejor que" = impersonal. ir → vaya/vayas (completely irregular).'},
+  {trigger:'alegrarse de que',ctx:'Emoción positiva',
+   q:'Me alegra que ___ (estar) sano y salvo.',en:'I am glad you are safe and sound.',
+   opts:['estés','estás','estuviste','estarás'],a:0,
+   x:'"Me alegra que" = emotion. estar is irregular with accents: esté, estés, esté, estemos, estén.'},
+  {trigger:'buscar a alguien que',ctx:'Referencia indefinida — slide 13',
+   q:'Busco un trabajo que ___ (pagar) bien.',en:'I am looking for a job that pays well.',
+   opts:['pague','paga','pagará','pagó'],a:0,
+   x:'SUBJUNTIVO — indefinite reference. The job does not exist yet in your life. pagar → pagu- + e = "pague" (g→gu spelling change).'},
+  {trigger:'aunque (hipótesis)',ctx:'Aunque hipotético — slide 15',
+   q:'Aunque ___ (estudiar) mucho, este examen es difícil.',en:'Even if you study a lot, this exam is hard.',
+   opts:['estudies','estudias','estudiaste','estudiarás'],a:0,
+   x:'"Aunque" + hypothesis = subjuntivo. The studying has NOT happened — it is a hypothetical future. estudiar → estudi- + es = "estudies."'},
+  {trigger:'a menos que',ctx:'Conjunción — slide 17',
+   q:'Voy a la fiesta a menos que ___ (llover).',en:'I will go to the party unless it rains.',
+   opts:['llueva','llueve','llovió','lloverá'],a:0,
+   x:'"A menos que" = unless = always subjuntivo. llover (o→ue) → lluev- + a = "llueva."'},
+  {trigger:'tal vez + subjuntivo',ctx:'Probabilidad — slide 19',
+   q:'Tal vez ___ (venir) Ana a la reunión.',en:'Maybe Ana will come to the meeting.',
+   opts:['venga','viene','vendrá','vino'],a:0,
+   x:'"Tal vez" can take subjuntivo (more doubt) or indicativo. With subjuntivo: more uncertain. venir → vengo → veng- → venga (go-go).'},
+  {trigger:'ojalá que',ctx:'Ojalá con que',
+   q:'¡Ojalá que nos ___ (dar) el trabajo pronto!',en:'Hopefully they give us the job soon!',
+   opts:['den','dan','darán','dieron'],a:0,
+   x:'"Ojalá que" = always subjuntivo. dar → dé/den (irregular). "Den" = ellos form. Dar chamba = give work (Mexican slang).'},,
+{trigger:'prohibir que',ctx:'Petición negativa',
+   q:'El médico prohíbe que ___ (fumar) dentro del hospital.',en:'The doctor forbids smoking inside the hospital.',
+   opts:['fumes','fumas','fumarás','fumaste'],a:0,
+   x:'"Prohibir que" = prohibition trigger = subjuntivo. fumar → fum- + es = "fumes." Different subjects: el médico prohíbe / tú fumas.'},
+  {trigger:'con tal de que',ctx:'Conjunción condición',
+   q:'Voy a la fiesta con tal de que tú también ___ (ir).',en:'I will go to the party provided that you also go.',
+   opts:['vayas','vas','fuiste','irás'],a:0,
+   x:'"Con tal de que" = always subjuntivo. ir → vaya/vayas (completely irregular — NOT "iras").'},
+  {trigger:'es probable que',ctx:'Expresión impersonal',
+   q:'Es probable que mañana ___ (llover) en la tarde.',en:'It is probable that tomorrow it will rain in the afternoon.',
+   opts:['llueva','llueve','llovió','lloverá'],a:0,
+   x:'"Es probable que" = impersonal uncertainty = subjuntivo. llover (o→ue) → lluev- + a = "llueva."'},
+  {trigger:'temer que',ctx:'Emoción — miedo',
+   q:'Temo que mi vuelo ___ (estar) cancelado.',en:'I fear that my flight is cancelled.',
+   opts:['esté','está','estará','estuvo'],a:0,
+   x:'"Temer que" = emotion (fear) = subjuntivo. estar is irregular with accents: esté, estés, esté, estemos, estén.'},
+  {trigger:'en caso de que',ctx:'Conjunción precaución',
+   q:'Guarda el número en caso de que lo ___ (necesitar).',en:'Save the number in case you need it.',
+   opts:['necesites','necesitas','necesitarás','necesitaste'],a:0,
+   x:'"En caso de que" = always subjuntivo. necesitar → necesit- + es = "necesites."'},
+  {trigger:'sin que',ctx:'Conjunción — sin permiso',
+   q:'No puedes entrar sin que el guardia te ___ (dar) permiso.',en:'You cannot enter without the guard giving you permission.',
+   opts:['dé','da','dará','dio'],a:0,
+   x:'"Sin que" = always subjuntivo. dar is irregular: dé, des, dé, demos, den. Note accent on "dé."'},
+  {trigger:'querer que',ctx:'Deseo con irregular',
+   q:'Quiero que ella ___ (poner) más sal a la comida.',en:'I want her to add more salt to the food.',
+   opts:['ponga','pone','pondrá','puso'],a:0,
+   x:'"Querer que" = desire trigger. poner → pongo → pong- → ponga (go-go pattern).'},
+  {trigger:'es una lástima que',ctx:'Expresión de pena',
+   q:'Es una lástima que él no ___ (poder) venir a la boda.',en:'It is a pity that he cannot come to the wedding.',
+   opts:['pueda','puede','podrá','pudo'],a:0,
+   x:'"Es una lástima que" = impersonal expression of emotion = subjuntivo. poder (o→ue) → pued- + a = "pueda."'},
+  {trigger:'alegrarse de que',ctx:'Emoción positiva',
+   q:'Me alegra que tus papás te ___ (apoyar) tanto.',en:'I am glad your parents support you so much.',
+   opts:['apoyen','apoyan','apoyarán','apoyaron'],a:0,
+   x:'"Alegrarse de que" = emotion trigger. apoyar → apoy- + en = "apoyen."'},
+  {trigger:'necesitar que',ctx:'Petición — necesidad',
+   q:'Necesito que alguien me ___ (ayudar) con las maletas.',en:'I need someone to help me with the luggage.',
+   opts:['ayude','ayuda','ayudará','ayudó'],a:0,
+   x:'"Necesitar que" = need/request trigger. ayudar → ayud- + e = "ayude."'},
+  {trigger:'desear que',ctx:'Deseo formal',
+   q:'Te deseo que ___ (tener) mucha suerte en el examen.',en:'I wish you a lot of luck on the exam.',
+   opts:['tengas','tienes','tendrás','tuviste'],a:0,
+   x:'"Desear que" = desire trigger. tener → tengo → teng- → tengas (go-go). Very common phrase in Mexican Spanish.'},
+  {trigger:'cuando + futuro',ctx:'Conjunción temporal futuro',
+   q:'Cuando ___ (ser) tu cumpleaños, te llevaré a cenar.',en:'When it is your birthday, I will take you to dinner.',
+   opts:['sea','es','fue','será'],a:0,
+   x:'"Cuando" + future event = subjuntivo. The birthday has NOT happened yet. ser → sea (completely irregular).'},
+];
+
+function renderFill(){
+  fillAns={};
+  const html=FILLS.map((f,i)=>{
+    const chips=f.opts.map((o,oi)=>`<button class="fill-chip" id="fc${i}_${oi}" onclick="answerFill(${i},${oi})">${o}</button>`).join('');
+    return `<div class="fill-card" id="fcard${i}">
+      
+      <div class="fill-q" id="fq${i}">${f.q.replace('___','<span class="fill-blank" id="fb${i}">___</span>')}</div>
+      <div class="fill-en">${f.en}</div>
+      <div class="fill-chips">${chips}</div>
+      <div class="fill-exp" id="fexp${i}"></div>
+    </div>`;
+  }).join('');
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">✏️ Completa — 18 sentences, all subjuntivo</div>
+  <div class="ex-instr">All 18 sentences require <span class="subj-pill">subjuntivo</span>. Choose the correct form. Covers all trigger types from the YMF curriculum including: conjunctions, aunque, tal vez, and indefinite reference!</div>
+  <div class="score-bar"><div class="sc"><span class="l">Total</span><span class="v">${FILLS.length}</span></div><div class="sc"><span class="l">OK</span><span class="v g" id="fi_ok">0</span></div><div class="sc"><span class="l">Miss</span><span class="v b" id="fi_err">0</span></div><div class="prog-w"><div class="prog-l"><span id="fi_pct">0%</span></div><div class="prog-t"><div class="prog-f" id="fi_pg" style="width:0%"></div></div></div></div>
+  <div class="fill-list">${html}</div>
+  <div class="fb" id="fi_fb"></div>
+  <div class="actions"><button class="btn btn-ghost" onclick="fillAns={};renderFill()">↺ Reset</button></div></div>`;
+}
+function answerFill(qi,oi){
+  if(fillAns[qi]!==undefined)return;
+  const f=FILLS[qi];const isOk=oi===f.a;fillAns[qi]=isOk;
+  document.getElementById('fcard'+qi).classList.add(isOk?'ok':'err');
+  const blank=document.getElementById('fb'+qi);if(blank)blank.innerHTML=`<span class="fill-chip ${isOk?'chip-ok':'chip-err'}" style="cursor:default">${f.opts[oi]}</span>${!isOk?` <span class="fill-chip chip-ok" style="cursor:default">${f.opts[f.a]}</span>`:''}`;
+  document.querySelectorAll(`[id^="fc${qi}_"]`).forEach(c=>{c.disabled=true;c.classList.add('used');});
+  const e=document.getElementById('fexp'+qi);if(e){e.classList.add('show');e.innerHTML=(isOk?'✓ ':'✗ ')+f.x;}
+  const done=Object.keys(fillAns).length;const ok=FILLS.filter((_,i)=>fillAns[i]).length;
+  document.getElementById('fi_ok').textContent=ok;document.getElementById('fi_err').textContent=done-ok;
+  document.getElementById('fi_pct').textContent=Math.round(done/FILLS.length*100)+'%';
+  document.getElementById('fi_pg').style.width=Math.round(done/FILLS.length*100)+'%';
+  if(done===FILLS.length){const pct=Math.round(ok/done*100);const fb=document.getElementById('fi_fb');fb.className='fb show '+(pct>=80?'ok':'partial');fb.innerHTML=`${pct>=80?'🏆':'📖'} <strong>${ok}/${done}.</strong> ${pct>=80?'¡Muy bien!':'Review the Conjuga tab.'}`;}
+}
+
+/* ══════════════════════════════════
+   EX 4 — SUBJ VS IND (28)
+   All 4 contrast types from PPTX:
+   1. creer/no creer (slide 12)
+   2. el/la vs un/una (slide 13)
+   3. cuando habitual vs futuro (slide 14)
+   4. aunque hecho vs hipótesis (slide 15)
+   + standard triggers
+══════════════════════════════════ */
+const VS=[
+{q:'Aunque ___, no pasarás el examen.',en:'Even if you study, you will not pass the exam.',subj:'estudies',ind:'estudias',correct:'subj',trigger:'aunque + hipótesis futura',
+   x:'SUBJUNTIVO. "Aunque" + HYPOTHESIS = subjuntivo. We do NOT know if you will study. It is a future possibility. estudiar → estudies.'},
+  {q:'Cuando ___ a México el próximo año, comeré muchos tacos.',en:'When I go to Mexico next year, I will eat many tacos.',subj:'vaya',ind:'voy',correct:'subj',trigger:'cuando + evento futuro',
+   x:'SUBJUNTIVO. "Cuando" + FUTURE event = subjuntivo. The trip has NOT happened yet. ir → vaya. Note "el próximo año" signals future.'},
+  {q:'Estoy buscando a la persona que ___ hablar español.',en:'I am looking for the (specific) person who speaks Spanish.',subj:'sepa',ind:'sabe',correct:'ind',trigger:'la persona (definida)',
+   x:'INDICATIVO. "La persona" = you know WHO. Known, specific person → indicativo. saber → sabe.'},
+  {q:'Lo voy a hacer a menos que tú ___ en contra.',en:'I am going to do it unless you are against it.',subj:'estés',ind:'estás',correct:'subj',trigger:'a menos que — siempre subjuntivo',
+   x:'SUBJUNTIVO. "A menos que" = unless = always subjuntivo. estar → esté/estés (irregular with accent).'},
+  {q:'Llámame en cuanto ___ los resultados.',en:'Call me as soon as the results come out.',subj:'salgan',ind:'salen',correct:'subj',trigger:'en cuanto + futuro',
+   x:'SUBJUNTIVO. "En cuanto" = as soon as + future event = subjuntivo. The results have NOT come out yet. salir → salgo → salg- → salgan (go-go).'},
+  {q:'Noto que hoy ___ muy bien.',en:'I notice you look very well today.',subj:'estés',ind:'estás',correct:'ind',trigger:'notar que — observación',
+   x:'INDICATIVO. "Notar que" = observation of reality = indicativo. You are observing something REAL. Like "ver que, saber que" — perception of fact = indicativo.'},
+  {q:'No me parece que eso ___ buena idea.',en:'It does not seem to me that that is a good idea.',subj:'sea',ind:'es',correct:'subj',trigger:'no parecer que',
+   x:'SUBJUNTIVO. "No parecer que" = negated opinion = subjuntivo. Like "no creer que" — negation of an opinion verb triggers subjuntivo. ser → sea.'},
+  {q:'Es obvio que él ___ mucho sobre el tema.',en:'It is obvious that he knows a lot about the topic.',subj:'sepa',ind:'sabe',correct:'ind',trigger:'es obvio que',
+   x:'INDICATIVO. "Es obvio que" = certainty/affirmation = indicativo. The obviousness CONFIRMS reality. saber → sabe.'},
+  {q:'Quiero comprar un libro que ___ de ciencia ficción.',en:'I want to buy a book that is sci-fi (any one).',subj:'sea',ind:'es',correct:'subj',trigger:'un/una → referencia indefinida',
+   x:'SUBJUNTIVO. "Un libro" = any book that has this quality. Indefinite/hypothetical reference → subjuntivo. ser → sea.'},
+  {q:'Es ridículo que él nunca ___ la verdad.',en:'It is ridiculous that he never tells the truth.',subj:'diga',ind:'dice',correct:'subj',trigger:'es ridículo que',
+   x:'SUBJUNTIVO. "Es ridículo que" = impersonal expression = subjuntivo. decir → digo → dig- → diga (go-go).'},
+  {q:'Aunque ___ mucho trabajo hoy, iré a la fiesta.',en:'Even though I have a lot of work today, I will go to the party.',subj:'tenga',ind:'tengo',correct:'ind',trigger:'aunque + hecho actual',
+   x:'INDICATIVO. "Aunque" + current known fact = indicativo. Having a lot of work is a KNOWN REAL situation. "Tengo mucho trabajo" = it is true right now.'},
+  {q:'Busco una casa que ___ jardín y garage.',en:'I am looking for a house that has a garden and garage.',subj:'tenga',ind:'tiene',correct:'subj',trigger:'buscar + indefinido',
+   x:'SUBJUNTIVO. Indefinite/hypothetical reference. You are searching for a house (you have not found it yet). Any house that has these qualities → subjuntivo. tener → tenga.'},
+  {q:'Compré la casa que ___ jardín y garage.',en:'I bought the house that has a garden and garage.',subj:'tenga',ind:'tiene',correct:'ind',trigger:'comprar + definido (ya existe)',
+   x:'INDICATIVO. You bought a SPECIFIC, REAL house. It exists, you know it, you bought it. Known/definite = indicativo. tener → tiene.'},
+  {q:'Cuando ___ a casa, toma una siesta.',en:'When you arrive home (future instruction), take a nap.',subj:'llegues',ind:'llegas',correct:'subj',trigger:'cuando + instrucción futura',
+   x:'SUBJUNTIVO. Giving an instruction about a future event. The arrival has NOT happened. llegar → llegu- + es = "llegues."'},
+  {q:'Cuando era niño, ___ en la calle.',en:'When I was a child, I used to play in the street.',subj:'jugara',ind:'jugaba',correct:'ind',trigger:'cuando + pasado (imperfecto)',
+   x:'INDICATIVO. "Cuando" + PAST = indicativo. This happened in the past — it is REAL. "Jugaba" (imperfecto = habitual past action). Past events = indicativo.'},
+  /* AUNQUE hecho vs hipótesis — slide 15 */
+  {q:'Aunque ___, no pasé el examen.',en:'Even though I studied, I did not pass the exam.',subj:'estudiara',ind:'estudié',correct:'ind',trigger:'aunque + hecho conocido (pasado)',
+   x:'INDICATIVO. "Aunque" + KNOWN FACT = indicativo. You DID study (past fact). "Estudié" (pretérito, completed action). It happened = indicativo.'},
+  {q:'Te escribo para que ___ mis noticias.',en:'I am writing so that you know my news.',subj:'sepas',ind:'sabes',correct:'subj',trigger:'para que — siempre subjuntivo',
+   x:'SUBJUNTIVO. "Para que" = purpose = always subjuntivo. saber → sepa/sepas (irregular: NOT "saba").'},
+  {q:'Veo que ya ___ la solución al problema.',en:'I see you already have the solution to the problem.',subj:'tengas',ind:'tienes',correct:'ind',trigger:'ver que',
+   x:'INDICATIVO. "Ver que" = observation of reality = indicativo. You are observing a REAL fact. tener → tienes.'},
+  {q:'Es posible que ___ mucha gente.',en:'It is possible there will be a lot of people.',subj:'haya',ind:'hay',correct:'subj',trigger:'es posible que',
+   x:'SUBJUNTIVO. "Es posible que" = uncertainty. haber → haya. Compare: "Es verdad que HAY" (fact → ind) vs "Es posible que HAYA" (uncertain → subj).'},
+  {q:'Cuando ___ en la prepa, yo vivía en Tlalpan.',en:'When I was in high school, I lived in Tlalpan.',subj:'estuviera',ind:'estaba',correct:'ind',trigger:'cuando + pasado',
+   x:'INDICATIVO. "Cuando" + past state = indicativo. This HAPPENED — it is past reality. "Cuando estaba en la prepa" (imperfecto, habitual past).'},
+  /* CREER/NO CREER — slide 12 */
+  {q:'Creo que tú ___ muy buena persona.',en:'I think you are a very good person.',subj:'seas',ind:'eres',correct:'ind',trigger:'creer que → indicativo',
+   x:'INDICATIVO. "Creer que" (affirmative) = belief = indicativo. You believe it is TRUE. Negate it → "No creo que SEAS" (subj).'},
+  {q:'Quizás ellos ___ mañana a la reunión.',en:'Perhaps they will come to the meeting tomorrow.',subj:'vengan',ind:'vienen',correct:'subj',trigger:'quizás + subjuntivo (más duda)',
+   x:'SUBJUNTIVO. "Quizás" can take either mood. With subjuntivo = more uncertainty. venir → vengan (go-go: vengo → veng- → vengan).'},
+  {q:'Estoy buscando a una persona que ___ hablar español.',en:'I am looking for someone who speaks Spanish (anyone).',subj:'sepa',ind:'sabe',correct:'subj',trigger:'una persona (indefinida)',
+   x:'SUBJUNTIVO. "Una persona" = could be anyone. Unknown/unidentified → subjuntivo. saber → sepa (irregular: NOT "saba").'},
+  {q:'Aunque me ___ que estudiara, no lo hice.',en:'Even though you told me to study, I did not do it.',subj:'dijeras',ind:'dijiste',correct:'ind',trigger:'aunque + hecho pasado',
+   x:'INDICATIVO. "Aunque" + past fact = indicativo. You really DID say it. "Dijiste" (pretérito de decir). Past real event = indicativo.'},
+  {q:'Te lo explico despacio para que lo ___ bien.',en:'I will explain it slowly so that you understand it well.',subj:'entiendas',ind:'entiendes',correct:'subj',trigger:'para que',
+   x:'SUBJUNTIVO. "Para que" = purpose = always subjuntivo. entender (e→ie) → entiend- + as = "entiendas."'},
+  {q:'Es verdad que ___ mucho tráfico en la CDMX.',en:'It is true that there is a lot of traffic in Mexico City.',subj:'haya',ind:'hay',correct:'ind',trigger:'es verdad que',
+   x:'INDICATIVO. "Es verdad que" = confirms reality = indicativo. It IS true = factual statement.'},
+  {q:'Aunque ___ mucho trabajo mañana, iré a la fiesta.',en:'Even if I have a lot of work tomorrow, I will go to the party.',subj:'tenga',ind:'tengo',correct:'subj',trigger:'aunque + hipótesis futura',
+   x:'SUBJUNTIVO. "Aunque" + future hypothesis = subjuntivo. We do NOT know yet if tomorrow will have a lot of work. tener → tenga (go-go: tengo → teng- → tenga).'},
+  {q:'Pienso que él ___ buen cocinero.',en:'I think he is a good cook.',subj:'sea',ind:'es',correct:'ind',trigger:'pensar que → indicativo',
+   x:'INDICATIVO. "Pensar que" (affirmative) = belief = indicativo. You are asserting it is TRUE.'},
+  {q:'No pienso que él ___ buen cocinero.',en:'I do not think he is a good cook.',subj:'sea',ind:'es',correct:'subj',trigger:'no pensar que → subjuntivo',
+   x:'SUBJUNTIVO. "No pensar que" = denial = subjuntivo. The negation triggers the mood change.'},
+  /* EL/LA vs UN/UNA — slide 13 */
+  {q:'Quiero comprar el libro que ___ de ciencia ficción.',en:'I want to buy the (specific) book that is sci-fi.',subj:'sea',ind:'es',correct:'ind',trigger:'el/la → referencia definida',
+   x:'INDICATIVO. "El libro" = you know WHICH book. Definite/known reference → indicativo. "Es" describes a specific real book.'},
+  {q:'Consta que ella ___ muy bien su trabajo.',en:'It is a fact that she knows her job very well.',subj:'sepa',ind:'sabe',correct:'ind',trigger:'constar que (hecho probado)',
+   x:'INDICATIVO. "Constar que" = it is a proven fact = indicativo. This confirms REALITY. saber → sabe.'},
+  {q:'Busco un profesor que ___ muy bien.',en:'I am looking for a teacher who explains very well.',subj:'explique',ind:'explica',correct:'subj',trigger:'busco a alguien (hipotético)',
+   x:'SUBJUNTIVO. You are LOOKING for someone (they do not exist in your life yet). Hypothetical/unknown = subjuntivo. explicar → expliqu- + e = "explique."'},
+  /* CUANDO habitual vs futuro — slide 14 */
+  {q:'Cuando ___ a México, siempre como tacos.',en:'When I go to Mexico (habitually), I always eat tacos.',subj:'vaya',ind:'voy',correct:'ind',trigger:'cuando + hábito presente',
+   x:'INDICATIVO. "Cuando" + habitual/recurring action = indicativo. This is something you regularly do. "Cuando voy" = every time I go (habit).'},
+  {q:'Aunque ___ tarde, me espera siempre.',en:'Even though it is late, he always waits for me.',subj:'sea',ind:'es',correct:'ind',trigger:'aunque + hecho actual conocido',
+   x:'INDICATIVO. "Aunque" + current known fact = indicativo. It IS late — that is a fact we both know. "Aunque ES tarde" (confirmed reality).'},
+  {q:'Aunque me ___ que estudie, no lo haré.',en:'Even if you tell me to study, I will not do it.',subj:'digas',ind:'dices',correct:'subj',trigger:'aunque + hipótesis',
+   x:'SUBJUNTIVO. "Aunque" + hypothesis = subjuntivo. It is a future/hypothetical situation. decir → digo → dig- → digas (go-go).'},
+  /* STANDARD TRIGGERS */
+  {q:'Me alegra que ___ aquí con nosotros.',en:'I am glad you are here with us.',subj:'estés',ind:'estás',correct:'subj',trigger:'alegrarse de que',
+   x:'SUBJUNTIVO. "Me alegra que" = emotion = subjuntivo. estar irregular with accents: esté, estés, esté, estemos, estén.'},
+  {q:'A lo mejor ___ mañana.',en:'Maybe they will come tomorrow.',subj:'vengan',ind:'vienen',correct:'ind',trigger:'a lo mejor — siempre indicativo',
+   x:'INDICATIVO. "A lo mejor" = maybe — BUT unlike "tal vez" and "quizás," "a lo mejor" ALWAYS takes indicativo! Compare: "Tal vez VENGAN" (subj) vs "A lo mejor VIENEN" (ind). This is a classic B2 trap.'},
+{q:'Me encanta que ella siempre ___ tan puntual.',en:'I love that she is always so punctual.',subj:'sea',ind:'es',correct:'subj',trigger:'encantar que',
+   x:'SUBJUNTIVO. "Me encanta que" = emotion trigger = subjuntivo. Even though she REALLY IS punctual, the emotional reaction triggers subjuntivo. ser → sea.'},
+  {q:'Ojalá que ___ buen tiempo en Cancún.',en:'Hopefully the weather will be nice in Cancún.',subj:'haga',ind:'hace',correct:'subj',trigger:'ojalá — siempre subjuntivo',
+   x:'SUBJUNTIVO. "Ojalá" ALWAYS triggers subjuntivo. hacer → hago → hag- → haga (go-go).'},
+  {q:'Sé que tú ___ la verdad.',en:'I know you know the truth.',subj:'sepas',ind:'sabes',correct:'ind',trigger:'saber que → certeza',
+   x:'INDICATIVO. "Saber que" = knowledge/certainty = indicativo. You KNOW it is real. "Sabes" (present indicativo).'},
+  {q:'No creo que tú ___ muy bonita.',en:'I do not think you are very pretty.',subj:'seas',ind:'eres',correct:'subj',trigger:'no creer que → subjuntivo',
+   x:'SUBJUNTIVO. "No creer que" = denial/doubt = subjuntivo. The negation flips the mood. ser → seas.'},
+  {q:'Tengo un profesor que ___ muy bien.',en:'I have a teacher who explains very well.',subj:'explique',ind:'explica',correct:'ind',trigger:'tengo a alguien (real, identificado)',
+   x:'INDICATIVO. You HAVE a REAL, SPECIFIC teacher who ACTUALLY explains well. Known person = indicativo. explicar → explica.'}
+];
+
+function renderVS(){
+  vsAns={};
+  const html=VS.map((item,i)=>{
+    const done=vsAns[i]!==undefined;const isOk=vsAns[i]===item.correct;
+    let sbtn=`<button class="vs-btn s" id="vsb${i}_s" onclick="answerVS(${i},'subj','${item.subj.replace(/'/g,"\\'")}',this)" ${done?'disabled':''}><span class="subj-pill">${item.subj}</span><span style="font-size:.66rem;display:block;margin-top:2px;opacity:.7">SUBJUNTIVO</span></button>`;
+    let ibtn=`<button class="vs-btn i" id="vsb${i}_i" onclick="answerVS(${i},'ind','${item.ind.replace(/'/g,"\\'")}',this)" ${done?'disabled':''}><span class="ind-pill">${item.ind}</span><span style="font-size:.66rem;display:block;margin-top:2px;opacity:.7">INDICATIVO</span></button>`;
+    if(done){if(item.correct==='subj'){sbtn=sbtn.replace('"vs-btn s"',`"vs-btn s ${isOk?'vok':''}"`);if(!isOk)ibtn=ibtn.replace('"vs-btn i"','"vs-btn i verr"');}else{ibtn=ibtn.replace('"vs-btn i"',`"vs-btn i ${isOk?'vok':''}"`);if(!isOk)sbtn=sbtn.replace('"vs-btn s"','"vs-btn s verr"');}}
+    return `<div class="vs-ex-card${done?(isOk?' ok':' err'):''}" id="vsc${i}">
+      
+      <div class="vs-q">${item.q.replace('___','<span class="vs-blank" id="vsbl${i}">___</span>')}</div>
+      <div class="vs-en">${item.en}</div>
+      <div class="vs-choice">${sbtn}${ibtn}</div>
+      <div class="vs-exp${done?' show':''}" id="vse${i}">${done?(isOk?'✓ ':'✗ ')+item.x:''}</div>
+    </div>`;
+  }).join('');
+  const done=Object.keys(vsAns).length;const ok=VS.filter((_,i)=>vsAns[i]===VS[i].correct).length;const tot=VS.length;
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">🔀 <span class="subj-pill">Subjuntivo</span> vs <span class="ind-pill">Indicativo</span> — ${tot} sentences</div>
+  <div class="ex-instr">Choose the mood. Based on ALL the contrast types from the YMF curriculum: creer/no creer, el/la vs un/una, cuando habitual vs futuro, aunque hecho vs hipótesis, and more!</div>
+  <div class="score-bar"><div class="sc"><span class="l">Total</span><span class="v">${tot}</span></div><div class="sc"><span class="l">OK</span><span class="v g" id="vs_ok">${ok}</span></div><div class="sc"><span class="l">Miss</span><span class="v b" id="vs_err">${done-ok}</span></div><div class="prog-w"><div class="prog-l"><span id="vs_pct">${Math.round(done/tot*100)}%</span></div><div class="prog-t"><div class="prog-f" id="vs_pg" style="width:${Math.round(done/tot*100)}%"></div></div></div></div>
+  <div class="vs-ex-list">${html}</div>
+  <div class="fb" id="vs_fb"></div>
+  <div class="actions"><button class="btn btn-ghost" onclick="vsAns={};renderVS()">↺ Reset</button></div></div>`;
+}
+function answerVS(qi,mode,form,btn){
+  if(vsAns[qi]!==undefined)return;
+  const item=VS[qi];const isOk=mode===item.correct;vsAns[qi]=mode;
+  document.getElementById('vsc'+qi).classList.add(isOk?'ok':'err');
+  const bl=document.getElementById('vsbl'+qi);if(bl){bl.textContent=form;}
+  const sb=document.getElementById('vsb'+qi+'_s'),ib=document.getElementById('vsb'+qi+'_i');
+  if(sb){sb.disabled=true;if(item.correct==='subj')sb.classList.add('vok');else if(mode==='subj')sb.classList.add('verr');}
+  if(ib){ib.disabled=true;if(item.correct==='ind')ib.classList.add('vok');else if(mode==='ind')ib.classList.add('verr');}
+  const e=document.getElementById('vse'+qi);if(e){e.classList.add('show');e.innerHTML=(isOk?'✓ ':'✗ ')+item.x;}
+  const done=Object.keys(vsAns).length;const ok=VS.filter((_,i)=>vsAns[i]===VS[i].correct).length;
+  document.getElementById('vs_ok').textContent=ok;document.getElementById('vs_err').textContent=done-ok;
+  document.getElementById('vs_pct').textContent=Math.round(done/VS.length*100)+'%';
+  document.getElementById('vs_pg').style.width=Math.round(done/VS.length*100)+'%';
+  if(done===VS.length){const pct=Math.round(ok/done*100);const fb=document.getElementById('vs_fb');fb.className='fb show '+(pct>=75?'ok':'partial');fb.innerHTML=`${pct>=75?'🏆':'📖'} <strong>${ok}/${done}.</strong> ${pct>=75?'¡Excelente! You master all the contrast patterns!':'Review cuando/aunque/creer sections in the Explicación.'}`;}
+}
+
+/* ══════════════════════════════════
+   EX 5 — DIÁLOGOS (8)
+   Real conversations, subjuntivo highlighted
+   Covers all contrast types from PPTX
+══════════════════════════════════ */
+const DIALS=[
+  {scene:'Mamá con su hijo antes de salir — CDMX 🏠',
+   chat:[
+     {side:'left',av:'👩',who:'Mamá',es:'Mijo, es importante que <span class="subj-hl">llegues</span> a tiempo a la escuela.',en:'Son, it is important that you arrive at school on time.'},
+     {side:'right',av:'🧑',who:'Hijo',es:'Sí mamá, ya sé.',en:'Yes mom, I know.'},
+     {side:'left',av:'👩',who:'Mamá',es:'Y quiero que <span class="subj-hl">comas</span> bien en el recreo, no puras papas.',en:'And I want you to eat well at recess, not just chips.'},
+     {side:'left',av:'👩',who:'Mamá',es:'Estudia para que <span class="subj-hl">aprendas</span> bien y ojalá <span class="subj-hl">saques</span> buenas notas.',en:'Study so that you learn well, and hopefully you get good grades.'},
+   ],
+   q:'How many different triggers appear in this conversation?',
+   opts:['One: es importante que','Two: querer que and para que','Three: es importante que, querer que, para que, and ojalá','Just ojalá'],
+   a:2,exp:'Four triggers! "Es importante que" (impersonal), "quiero que" (desire), "para que" (purpose — always subjuntivo), and "ojalá" (always subjuntivo). All trigger subjuntivo with a different subject.'},
+  {scene:'Novios — creer vs no creer 💬 WhatsApp',
+   chat:[
+     {side:'left',av:'👩',who:'Ana',es:'¿Crees que Juan <span class="ind-pill">viene</span> a la fiesta?',en:'Do you think Juan is coming to the party?'},
+     {side:'right',av:'👨',who:'Carlos',es:'Yo creo que <span class="ind-pill">va</span> a venir. Siempre llega a las fiestas.',en:'I think he will come. He always shows up to parties.'},
+     {side:'left',av:'👩',who:'Ana',es:'Pues yo no creo que <span class="subj-hl">pueda</span> porque trabaja mañana.',en:'Well, I do not think he can because he works tomorrow.'},
+     {side:'right',av:'👨',who:'Carlos',es:'¡Ojalá que <span class="subj-hl">venga</span>! Es muy divertido.',en:'Hopefully he comes! He is very fun.'},
+   ],
+   q:'Carlos uses "va" (indicativo) but Ana uses "pueda" (subjuntivo). Why?',
+   opts:['They are talking about different people','Carlos BELIEVES Juan will come (certainty → ind). Ana DOUBTS it ("no creo que" → subj)','Carlos is wrong and should use subjuntivo too','The past tense changes the mood'],
+   a:1,exp:'Perfect creer/no creer contrast! "Creo que VA" (belief → indicativo) vs "no creo que PUEDA" (doubt → subjuntivo). Same person, same event — but the mood reflects the SPEAKER\'S attitude. This is slide 12 of the PPTX in real life.'},
+  {scene:'En la agencia de trabajo — referencia indefinida 💼',
+   chat:[
+     {side:'right',av:'🙋',who:'Candidata',es:'Busco un trabajo que <span class="subj-hl">pague</span> bien y que <span class="subj-hl">tenga</span> buen ambiente.',en:'I am looking for a job that pays well and has a good atmosphere.'},
+     {side:'left',av:'👩',who:'Agente',es:'Tenemos una empresa que <span class="ind-pill">ofrece</span> exactamente eso.',en:'We have a company that offers exactly that.'},
+     {side:'right',av:'🙋',who:'Candidata',es:'¿Y buscan a alguien que <span class="subj-hl">hable</span> inglés?',en:'And are they looking for someone who speaks English?'},
+     {side:'left',av:'👩',who:'Agente',es:'Sí, necesitan a alguien que <span class="subj-hl">sepa</span> inglés y que <span class="subj-hl">tenga</span> experiencia.',en:'Yes, they need someone who knows English and has experience.'},
+   ],
+   q:'The agent uses "ofrece" (indicativo) but the candidate uses "pague/tenga/hable" (subjuntivo). Why?',
+   opts:['Random variation','The candidate is describing hypothetical/unknown qualities. The agent refers to a REAL, SPECIFIC company.','The agent is wrong and should use subjuntivo','The verbs are different so the moods change'],
+   a:1,exp:'This is slide 13 in action! Candidate: "busco un trabajo que PAGUE" = any job that has these qualities (unknown, hypothetical = subjuntivo). Agent: "tenemos una empresa que OFRECE" = a SPECIFIC, REAL company that actually does this (known, definite = indicativo).'},
+  {scene:'Amigos planeando viaje a México ✈️',
+   chat:[
+     {side:'left',av:'👨',who:'Tomás',es:'Cuando <span class="ind-pill">voy</span> a México, siempre como en el mercado de Coyoacán.',en:'When I go to Mexico (habitually), I always eat at the Coyoacán market.'},
+     {side:'right',av:'👩',who:'Sofía',es:'¡Qué rico! Cuando <span class="subj-hl">vayamos</span> juntos el próximo mes, también quiero ir ahí.',en:'How delicious! When we go together next month, I also want to go there.'},
+     {side:'left',av:'👨',who:'Tomás',es:'Perfecto. Llámame cuando <span class="subj-hl">llegues</span> al aeropuerto.',en:'Perfect. Call me when you arrive at the airport.'},
+     {side:'right',av:'👩',who:'Sofía',es:'Claro, y ojalá que el clima <span class="subj-hl">esté</span> bien.',en:'Of course, and hopefully the weather will be nice.'},
+   ],
+   q:'Tomás says "cuando VOY" (indicativo) but Sofía says "cuando VAYAMOS" (subjuntivo). What is the rule?',
+   opts:['Tomás is talking about himself; Sofía about both of them','Cuando + HABITUAL/PRESENT action = indicativo; cuando + FUTURE event that has NOT happened = subjuntivo','The nosotros form always takes subjuntivo','Both should use subjuntivo'],
+   a:1,exp:'This is slide 14 of the PPTX! "Cuando VOY" = every time I go (habit/present = indicativo). "Cuando VAYAMOS el próximo mes" = when we go next month (future, not happened yet = subjuntivo). Same word "cuando" — different moods based on habitual vs future.'},
+  {scene:'En el médico — expresiones impersonales 🏥',
+   chat:[
+     {side:'left',av:'👨',who:'Doctor',es:'Es necesario que usted <span class="subj-hl">descanse</span> al menos ocho horas.',en:'It is necessary that you rest at least eight hours.'},
+     {side:'right',av:'🙋',who:'Paciente',es:'Es que trabajo mucho. Es posible que no <span class="subj-hl">pueda</span>.',en:'The thing is I work a lot. It is possible I cannot.'},
+     {side:'left',av:'👨',who:'Doctor',es:'Le pido que no <span class="subj-hl">beba</span> tanto café. Es una lástima que su cuerpo no <span class="subj-hl">tenga</span> más energía.',en:'I ask you not to drink so much coffee. It is a pity your body does not have more energy.'},
+     {side:'right',av:'🙋',who:'Paciente',es:'Está bien, lo intentaré.',en:'Okay, I will try.'},
+   ],
+   q:'"Es posible que no pueda" — why subjuntivo and not "no puedo"?',
+   opts:['Because the patient is being polite','Because "es posible que" = uncertainty = subjuntivo; "no puedo" would be a factual statement','Because it is a different subject','Because "poder" is always irregular'],
+   a:1,exp:'"Es posible que" = impersonal expression of uncertainty = subjuntivo. If the patient said "no puedo" (indicativo), it would be a factual assertion — "I cannot (for certain)." With "es posible que no PUEDA" = it is possible I cannot (uncertainty). The impersonal expression changes the mood.'},
+  {scene:'Aunque no siempre funciona… 😅',
+   chat:[
+     {side:'right',av:'🧑',who:'Estudiante',es:'Aunque <span class="ind-pill">estudié</span> toda la noche, no pasé el examen.',en:'Even though I studied all night, I did not pass the exam.'},
+     {side:'left',av:'👩',who:'Maestra',es:'Lo siento. Pero aunque <span class="subj-hl">estudies</span> más la próxima vez, también tienes que practicar.',en:'I am sorry. But even if you study more next time, you also need to practice.'},
+     {side:'right',av:'🧑',who:'Estudiante',es:'¿Aunque <span class="subj-hl">practique</span> mucho, todavía me va a costar?',en:'Even if I practice a lot, it will still be difficult?'},
+     {side:'left',av:'👩',who:'Maestra',es:'Sí. Aunque el subjuntivo <span class="subj-hl">sea</span> difícil, con práctica se puede.',en:'Yes. Even though the subjunctive is hard, with practice it is possible.'},
+   ],
+   q:'"Aunque estudié" (indicativo) vs "aunque estudies" (subjuntivo) — what is the difference?',
+   opts:['Estudié is past; estudies is present','Aunque + INDICATIVO = fact that happened; aunque + SUBJUNTIVO = hypothesis or future possibility','The teacher is wrong — both should be indicativo','Estudié refers to one night; estudies refers to multiple nights'],
+   a:1,exp:'Slide 15 of the PPTX! "Aunque ESTUDIÉ" = even though I studied (it HAPPENED — past fact = indicativo). "Aunque ESTUDIES más" = even if you study more (it has NOT happened yet, future possibility = subjuntivo). The difference is fact vs hypothesis.'},
+  {scene:'Buscando algo en el tianguis 🛒 CDMX',
+   chat:[
+     {side:'right',av:'🙋',who:'Cliente',es:'Busco una bolsa que <span class="subj-hl">sea</span> de cuero y que no <span class="subj-hl">cueste</span> mucho.',en:'I am looking for a leather bag that does not cost a lot.'},
+     {side:'left',av:'👩',who:'Vendedora',es:'Tenemos esa bolsa de cuero que <span class="ind-pill">es</span> muy famosa aquí en el tianguis.',en:'We have that leather bag that is very famous here at the market.'},
+     {side:'right',av:'🙋',who:'Cliente',es:'¿Y tienen algo que <span class="subj-hl">sea</span> más económico?',en:'And do you have something that is more affordable?'},
+     {side:'left',av:'👩',who:'Vendedora',es:'Sí, pero si quiere algo que <span class="subj-hl">dure</span> mucho, le conviene la de cuero.',en:'Yes, but if you want something that lasts long, the leather one is better for you.'},
+   ],
+   q:'"Busco una bolsa que SEA" vs "Tenemos esa bolsa que ES" — what is the grammatical difference?',
+   opts:['Busco is present; tenemos is also present so they should be the same','The client is searching for a HYPOTHETICAL bag (indefinite → subj); the vendor has a SPECIFIC real bag (definite → ind)','Sea is more formal than es','The vendor is making a mistake'],
+   a:1,exp:'Slide 13 in the market! "Busco una bolsa que SEA" = any bag that has these qualities (you have not found it yet, hypothetical = subjuntivo). "Tenemos ESA bolsa que ES" = a specific, real bag that actually IS famous (known, definite = indicativo). The article tells you the mood: "una" (indefinite) → subj, "esa/la" (definite) → ind.'},
+  {scene:'Amigos comentando el partido de fútbol ⚽',
+   chat:[
+     {side:'left',av:'👨',who:'Marcos',es:'No creo que el árbitro <span class="subj-hl">haya</span> tomado la decisión correcta.',en:'I do not think the referee made the right decision.'},
+     {side:'right',av:'👨',who:'Luis',es:'Pues yo creo que <span class="ind-pill">tenía</span> razón. El jugador sí <span class="ind-pill">tocó</span> la pelota con la mano.',en:'Well, I think he was right. The player DID touch the ball with his hand.'},
+     {side:'left',av:'👨',who:'Marcos',es:'¡Imposible! Aunque el video <span class="subj-hl">muestre</span> eso, el ojo humano no <span class="ind-pill">miente</span>.',en:'Impossible! Even if the video shows that, the human eye does not lie.'},
+     {side:'right',av:'👨',who:'Luis',es:'Ojalá que el VAR <span class="subj-hl">aclare</span> todo.',en:'Hopefully the VAR will clarify everything.'},
+   ],
+   q:'Luis says "creo que TENÍA razón" using indicativo. Marcos says "no creo que HAYA" using subjuntivo. What determines the mood?',
+   opts:['The tense (past vs present)','Whether the speaker BELIEVES (creer que → ind) or DOUBTS (no creer que → subj)','Luis is wrong and should say "no creo que tuviera"','The verb haber always requires subjuntivo'],
+   a:1,exp:'The creer/no creer contrast from slide 12, live in a real argument! "Creo que TENÍA razón" = Luis believes it (certainty → indicativo). "No creo que HAYA tomado la decisión correcta" = Marcos doubts it (denial → subjuntivo). Also notice "aunque el video MUESTRE" = even if (hypothetical, we are debating if it shows this = subjuntivo).'},
+];
+
+function renderDial(){
+  dialAns={};
+  const html=DIALS.map((d,i)=>{
+    const msgs=d.chat.map(m=>`<div class="chat-row ${m.side}">
+      <div class="chat-av">${m.av}</div>
+      <div><div class="chat-who">${m.who}</div>
+      <div class="chat-bub">${m.es}
+        <button class="chat-audio" onclick="speak('${m.es.replace(/<[^>]*>/g,'').replace(/'/g,"\\'")}',this)">🔊</button>
+        <div class="chat-en">${m.en}</div>
+      </div></div>
+    </div>`).join('');
+    const opts=d.opts.map((o,oi)=>`<button class="dial-opt" id="do${i}_${oi}" onclick="answerDial(${i},${oi})">${o}</button>`).join('');
+    return `<div class="dial-card" id="dc${i}">
+      <div class="dial-scene">📍 ${d.scene}</div>
+      <div class="chat-body">${msgs}</div>
+      <div class="dial-q">${d.q}</div>
+      <div class="dial-opts">${opts}</div>
+      <div class="dial-exp" id="de${i}"></div>
+    </div>`;
+  }).join('');
+  const tot=DIALS.length;const done=Object.keys(dialAns).length;const ok=DIALS.filter((_,i)=>dialAns[i]).length;
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">💬 Diálogos — 8 real conversations</div>
+  <div class="ex-instr">Subjuntivo is highlighted in <span class="subj-hl">purple</span>, indicativo in <span class="ind-pill">green</span>. Read each conversation and answer the question about WHY each mood is used. All 4 PPTX contrast types appear here!</div>
+  <div class="score-bar"><div class="sc"><span class="l">Total</span><span class="v">${tot}</span></div><div class="sc"><span class="l">OK</span><span class="v g" id="da_ok">${ok}</span></div><div class="sc"><span class="l">Miss</span><span class="v b" id="da_err">${done-ok}</span></div><div class="prog-w"><div class="prog-l"><span id="da_pct">${Math.round(done/tot*100)}%</span></div><div class="prog-t"><div class="prog-f" id="da_pg" style="width:${Math.round(done/tot*100)}%"></div></div></div></div>
+  ${html}
+  <div class="fb" id="da_fb"></div>
+  <div class="actions"><button class="btn btn-ghost" onclick="dialAns={};renderDial()">↺ Reset</button></div></div>`;
+}
+function answerDial(qi,oi){
+  if(dialAns[qi]!==undefined)return;
+  const d=DIALS[qi];const isOk=oi===d.a;dialAns[qi]=isOk;
+  document.getElementById('dc'+qi).classList.add(isOk?'ok':'err');
+  d.opts.forEach((_,x)=>{const b=document.getElementById(`do${qi}_${x}`);if(!b)return;b.disabled=true;if(x===d.a)b.classList.add('dshow');else if(x===oi&&!isOk)b.classList.add('derr');});
+  const e=document.getElementById('de'+qi);if(e){e.classList.add('show');e.innerHTML=(isOk?'✓ ':'✗ ')+d.exp;}
+  const done=Object.keys(dialAns).length;const ok=DIALS.filter((_,i)=>dialAns[i]).length;
+  document.getElementById('da_ok').textContent=ok;document.getElementById('da_err').textContent=done-ok;
+  document.getElementById('da_pct').textContent=Math.round(done/DIALS.length*100)+'%';
+  document.getElementById('da_pg').style.width=Math.round(done/DIALS.length*100)+'%';
+  if(done===DIALS.length){const pct=Math.round(ok/done*100);const fb=document.getElementById('da_fb');fb.className='fb show '+(pct>=75?'ok':'partial');fb.innerHTML=`${pct>=75?'🏆':'📖'} <strong>${ok}/${done}.</strong> ${pct>=75?'¡Excelente! You understand the subjuntivo in real conversations!':'Review the contrast sections in the Explicación.'}`;}
+}
+
+/* ══════════════════════════════════
+   EX 6 — SPEED ROUND (30, click)
+   Covers all trigger types from PPTX
+══════════════════════════════════ */
+const SP=[
+  {cat:'Deseo',q:'Quiero que él ___ (ir) a la tienda.',a:'vaya',opts:['va','vaya','fue','irá']},
+  {cat:'Emoción',q:'Me sorprende que siempre ___ (ganar) la lotería.',a:'ganes',opts:['ganas','ganarás','ganes','ganaste']},
+  {cat:'Duda',q:'Dudo que tú ___ (ser) buen cocinero.',a:'seas',opts:['eres','seas','fuiste','serías']},
+  {cat:'Impersonal',q:'Es importante que (tú) ___ (estudiar) más.',a:'estudies',opts:['estudias','estudiarás','estudies','estudiar']},
+  {cat:'Indicativo',q:'Creo que el equipo ___ (ser) muy bueno.',a:'es',opts:['sea','es','era','sería']},
+  {cat:'Indicativo',q:'Pienso que ella ___ (tener) razón.',a:'tiene',opts:['tenga','tiene','tuvo','tendrá']},
+  {cat:'Negación',q:'No creo que tú ___ (ser) muy bonita.',a:'seas',opts:['eres','seas','fuiste','serías']},
+  {cat:'Ref. indefinida',q:'Busco un libro que ___ (ser) interesante.',a:'sea',opts:['es','sea','era','sería']},
+  {cat:'Ref. definida',q:'Tengo el libro que ___ (ser) de García Márquez.',a:'es',opts:['sea','es','era','sería']},
+  {cat:'Cuando futuro',q:'Llámame cuando ___ (llegar) a casa.',a:'llegues',opts:['llegas','llegues','llegaste','llegarás']},
+  {cat:'Cuando hábito',q:'Cuando ___ (ir) al mercado, siempre compro tacos.',a:'voy',opts:['vaya','voy','fui','fuera']},
+  {cat:'Aunque hip.',q:'Aunque ___ (estudiar), este examen es difícil.',a:'estudies',opts:['estudias','estudies','estudiaste','estudiarás']},
+  {cat:'Aunque hecho',q:'Aunque ___ (estudiar) mucho, no pasé.',a:'estudié',opts:['estudie','estudiara','estudié','estudiaré']},
+  {cat:'Para que',q:'Lo hago para que tú ___ (poder) descansar.',a:'puedas',opts:['puedes','podrás','puedas','pudiste']},
+  {cat:'Antes de que',q:'Antes de que te ___ (ir), di adiós.',a:'vayas',opts:['vas','vayas','fuiste','irás']},
+  {cat:'Ojalá',q:'¡Ojalá que ___ (poder) venir a mi fiesta!',a:'puedas',opts:['puedes','podrás','puedas','pudiste']},
+  {cat:'Tal vez',q:'Tal vez ___ (venir) Ana a la reunión.',a:'venga',opts:['viene','vendrá','venga','vino']},
+  {cat:'A lo mejor',q:'A lo mejor ___ (venir) mañana.',a:'vienen',opts:['vengan','vienen','vendrán','vinieron']},
+  {cat:'A menos que',q:'Voy a la fiesta a menos que ___ (llover).',a:'llueva',opts:['llueve','llovió','llueva','lloverá']},
+  {cat:'Es posible',q:'Es posible que ___ (haber) tráfico.',a:'haya',opts:['hay','hubo','haya','habrá']},
+  {cat:'Es verdad',q:'Es verdad que en México ___ (haber) mucho chile.',a:'hay',opts:['haya','hay','hubiera','habrá']},
+  {cat:'Deseo',q:'Mi mamá quiere que yo ___ (estudiar).',a:'estudie',opts:['estudio','estudié','estudie','estudiaré']},
+  {cat:'Emoción',q:'Me gusta que tú ___ (ser) divertido.',a:'seas',opts:['eres','seas','fuiste','serías']},
+  {cat:'Impersonal',q:'Es una lástima que ella no ___ (poder) venir.',a:'pueda',opts:['puede','pueda','podría','pudo']},
+  {cat:'Petición',q:'Necesito que ella ___ (hacer) la comida.',a:'haga',opts:['hace','hará','haga','hizo']},
+  {cat:'Cuando futuro',q:'Cuando ___ (ser) mayor, quiero ser médico.',a:'sea',opts:['soy','seré','sea','fui']},
+  {cat:'Ref. indefinida',q:'Busco a alguien que ___ (saber) hablar chino.',a:'sepa',opts:['sabe','sabrá','sepa','supo']},
+  {cat:'Indicativo',q:'Conozco a alguien que ___ (saber) hablar chino.',a:'sabe',opts:['sepa','sabe','sabrá','supo']},
+  {cat:'Aunque hip.',q:'Aunque me ___ (decir) que venga, no voy.',a:'digas',opts:['dices','digas','dijiste','dirás']},
+  {cat:'Conjunción',q:'Lo haré con tal de que tú ___ (estar) de acuerdo.',a:'estés',opts:['estás','estarás','estés','estuviste']},
+{cat:'Emoción',q:'Siento que él no ___ (poder) venir.',a:'pueda',opts:['puede','podría','pueda','podrá']},
+  {cat:'Indicativo',q:'Noto que hoy tú ___ (estar) muy cansado.',a:'estás',opts:['estés','estás','estarías','estuvieras']},
+  {cat:'Deseo',q:'El jefe exige que todos ___ (llegar) temprano.',a:'lleguen',opts:['llegan','llegarán','lleguen','llegaron']},
+  {cat:'Indicativo',q:'Está claro que ellos ___ (tener) razón.',a:'tienen',opts:['tengan','tienen','tuvieran','tendrán']},
+  {cat:'Conjunción',q:'En caso de que ___ (llover), lleva paraguas.',a:'llueva',opts:['llueve','llovió','llueva','lloverá']},
+  {cat:'Impersonal',q:'Es una lástima que ella no ___ (venir).',a:'venga',opts:['viene','vendrá','venga','vino']},
+  {cat:'Indicativo',q:'Cuando era niño, ___ (jugar) en la calle.',a:'jugaba',opts:['juegue','jugara','jugaba','jugará']},
+  {cat:'Ref. indefinida',q:'Busco una casa que ___ (tener) jardín.',a:'tenga',opts:['tiene','tendrá','tenga','tuvo']},
+  {cat:'Ref. definida',q:'Compré la casa que ___ (tener) jardín.',a:'tiene',opts:['tenga','tendrá','tiene','tuvo']},
+  {cat:'Aunque hip.',q:'Aunque ___ (hacer) frío, saldré.',a:'haga',opts:['hace','hizo','hará','haga']},
+  {cat:'Aunque hecho',q:'Aunque ___ (hacer) frío ayer, salí igual.',a:'hizo',opts:['haga','hace','hará','hizo']},
+  {cat:'Impersonal',q:'Es ridículo que él nunca ___ (decir) la verdad.',a:'diga',opts:['dice','diga','diría','dijo']},
+  {cat:'Indicativo',q:'Conozco a alguien que ___ (hablar) árabe.',a:'habla',opts:['hable','habla','hablaría','hablará']},
+  {cat:'Conjunción',q:'Sin que nadie te ___ (ver), entra.',a:'vea',opts:['ve','veía','vea','verá']},
+  {cat:'Deseo',q:'Prefiero que tú ___ (venir) mañana.',a:'vengas',opts:['vienes','vendrás','vengas','viniste']}];
+
+function renderSpeed(){
+  const arr=seededShuffle([...SP],42);window.__sp=arr;
+  spIdx=0;spOk=0;spErr=0;spStreak=0;spAns={};
+  document.getElementById('exContainer').innerHTML=`<div class="panel"><div class="ex-title">⚡ Speed round</div>
+  <div class="ex-instr">See the trigger category and sentence. Choose the correct verb form — <span class="subj-pill">subjuntivo</span> or <span class="ind-pill">indicativo</span>? 30 items covering the full YMF curriculum including: cuando, aunque, creer vs no creer, buscar vs tener, tal vez vs a lo mejor!</div>
+  <div class="sp-wrap" id="spWrap"><div class="sp-start"><div style="font-size:2.8rem">⚡</div><h2>Subjuntivo rápido</h2><p style="color:var(--muted);max-width:430px">30 sentences covering ALL trigger types including the tricky contrasts. Subjuntivo or indicativo — decide fast!</p><button class="btn btn-cyan" onclick="startSp()">¡Empezamos!</button></div></div></div>`;
+}
+function startSp(){spIdx=0;spOk=0;spErr=0;spStreak=0;nextSp();}
+function nextSp(){
+  const arr=window.__sp;if(spIdx>=arr.length){endSp();return;}
+  const item=arr[spIdx];
+  const opts=seededShuffle([...item.opts],spIdx*17+3);
+  const btns=opts.map(o=>`<button class="sp-opt" onclick="answerSp('${o.replace(/'/g,"\\'")}','${item.a.replace(/'/g,"\\'")}',this)">${o}</button>`).join('');
+  document.getElementById('spWrap').innerHTML=`
+    <div class="sp-stats"><div class="spst"><div class="sl">Q</div><div class="sv w">${spIdx+1}/${arr.length}</div></div><div class="spst"><div class="sl">OK</div><div class="sv g">${spOk}</div></div><div class="spst"><div class="sl">Miss</div><div class="sv b">${spErr}</div></div></div>
+    <div class="streak${spStreak>=3?' on':''}">🔥 x${spStreak}</div>
+    <div class="sp-card">
+      <div class="sp-q">${item.q}</div>
+    </div>
+    <div class="sp-opts">${btns}</div>
+    <div class="sp-fb" id="sFb" style="opacity:0"></div>`;
+}
+function answerSp(chosen,correct,btn){
+  if(spAns[spIdx])return;spAns[spIdx]=true;
+  const isOk=chosen===correct;if(isOk){spOk++;spStreak++;}else{spErr++;spStreak=0;}
+  document.querySelectorAll('.sp-opt').forEach(b=>{b.disabled=true;if(b.textContent===correct)b.classList.add('spshow');else if(b===btn&&!isOk)b.classList.add('sperr');});
+  const fb=document.getElementById('sFb');if(fb){fb.style.opacity='1';fb.className=`sp-fb ${isOk?'ok':'err'}`;fb.innerHTML=isOk?`✓ ${correct}!${spStreak>=3?' 🔥 x'+spStreak:''}`:`✗ → <span class="${correct===SP.find(i=>i.a===correct)?.cat==='Indicativo'?'ind-pill':'subj-pill'}">${correct}</span>`;}
+  if(spStreak>=3){const cf=document.getElementById('cf');cf.textContent='🔥 x'+spStreak;cf.classList.remove('pop');void cf.offsetWidth;cf.classList.add('pop');}
+  spIdx++;setTimeout(nextSp,isOk?800:1700);
+}
+function endSp(){
+  const pct=Math.round(spOk/SP.length*100);
+  const emo=pct>=90?'🏆':pct>=70?'🎉':pct>=50?'💪':'📚';
+  document.getElementById('spWrap').innerHTML=`<div class="sp-start"><div style="font-size:3rem">${emo}</div><h2>${spOk}/${SP.length}</h2><p style="color:var(--muted)">${pct>=90?'¡Excelente! Subjuntivo dominado!':pct>=70?'¡Muy bien! Almost there.':pct>=50?'Good — keep studying the contrasts!':'Review the Explicación, especially cuando/aunque/creer.'}</p><button class="btn btn-cyan" onclick="startSp()">↺ Try again</button></div>`;
+}
+
+/* ══════════════════════════════════
+   EX 7 — REFERENCE
+   Based on PPTX slides 21-22 (resumen + práctica)
+══════════════════════════════════ */
+function renderRef(){
+  const cats=[
+    {emoji:'💛',color:'var(--s1)',label:'Deseos / Voluntad',items:['querer que','desear que','esperar que','preferir que','pedir que','exigir que','necesitar que','prohibir que']},
+    {emoji:'❤️',color:'var(--s2)',label:'Emociones',items:['gustar que','molestar que','alegrarse de que','sorprenderse de que','temer que','sentir que','encantar que','enfadarse de que']},
+    {emoji:'🔵',color:'var(--s3)',label:'Duda / Negación',items:['dudar que','no creer que','no pensar que','negar que','no parecer que','no estar claro que','no estar seguro/a de que']},
+    {emoji:'🟢',color:'var(--s4)',label:'Expresiones impersonales',items:['es importante que','es necesario que','es posible que','es probable que','es mejor que','es bueno/malo que','es raro que','es una lástima que','es ridículo que']},
+    {emoji:'🔶',color:'var(--s6)',label:'Conjunciones (siempre subjuntivo)',items:['antes de que','para que','a menos que','sin que','con tal de que','en caso de que','a no ser que','aunque (hipótesis)']},
+    {emoji:'🌀',color:'var(--s2)',label:'Probabilidad',items:['ojalá (siempre subj)','tal vez (subj o ind)','quizá/quizás (subj o ind)','posiblemente (subj)','a lo mejor (siempre IND)','probablemente (subj)']},
+  ];
+  const contrasts=[
+    {title:'creer/no creer',ind:'Creo que ES buena persona.',subj:'No creo que SEA buena persona.'},
+    {title:'el/la vs un/una',ind:'Tengo el libro que EXPLICA esto.',subj:'Busco un libro que EXPLIQUE esto.'},
+    {title:'cuando habitual vs futuro',ind:'Cuando VOY a México, como tacos.',subj:'Cuando VAYA a México, comeré tacos.'},
+    {title:'aunque hecho vs hipótesis',ind:'Aunque ESTUDIÉ, no pasé.',subj:'Aunque ESTUDIES, no pasarás.'},
+    {title:'a lo mejor vs tal vez',ind:'A lo mejor VIENEN mañana.',subj:'Tal vez VENGAN mañana.'},
+  ];
+  const catHtml=cats.map(c=>`<div style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:13px;padding:12px 15px">
+    <div style="font-size:.78rem;font-weight:900;color:${c.color};margin-bottom:8px">${c.emoji} ${c.label}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px">${c.items.map(i=>`<span style="background:rgba(255,255,255,.07);border-radius:7px;padding:4px 9px;font-size:.78rem">${i}</span>`).join('')}</div>
+  </div>`).join('');
+  const contrastHtml=contrasts.map(c=>`<div style="background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:11px 14px">
+    <div style="font-size:.68rem;font-weight:900;color:var(--s6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">${c.title}</div>
+    <div style="font-size:.83rem;color:#6ee7b7;margin-bottom:4px">✅ IND: ${c.ind}</div>
+    <div style="font-size:.83rem;color:#c4b5fd">⚡ SUB: ${c.subj}</div>
+  </div>`).join('');
+  const pptxPractice=[
+    {tag:'Probabilidad',orig:'Yo trabajaré mañana.',result:'Tal vez trabaje mañana.'},
+    {tag:'Deseo',orig:'Él va a la tienda.',result:'Quiero que él vaya a la tienda.'},
+    {tag:'Emoción',orig:'Tú eres muy divertido.',result:'Me gusta que tú seas muy divertido.'},
+    {tag:'Petición',orig:'Ella hace la comida.',result:'Necesito que ella haga la comida.'},
+  ];
+  const practiceHtml=pptxPractice.map(p=>`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px 13px;font-size:.85rem">
+    <span style="background:rgba(167,139,250,.12);color:#c4b5fd;border-radius:5px;padding:1px 7px;font-size:.66rem;font-weight:900;margin-bottom:5px;display:inline-block">${p.tag}</span>
+    <div style="color:var(--muted2);">${p.orig}</div>
+    <div style="color:#c4b5fd;margin-top:3px">→ ${p.result}</div>
+  </div>`).join('');
+  document.getElementById('exContainer').innerHTML=`<div class="panel">
+  <div class="ex-title">📄 Referencia rápida</div>
+
+  <div style="background:rgba(251,191,36,.07);border:1.5px solid rgba(251,191,36,.25);border-radius:14px;padding:14px 16px;margin-bottom:20px;font-size:.88rem;line-height:1.85">
+    <div style="font-family:var(--display);font-size:.9rem;font-weight:900;color:var(--s6);margin-bottom:8px">⚡ Formación — 3 pasos</div>
+    <p>1. Yo form present indicative: <strong>hablo, como, vivo, tengo, hago</strong></p>
+    <p>2. Drop the -o: <strong>habl-, com-, viv-, teng-, hag-</strong></p>
+    <p>3. OPPOSITE vowel endings: <strong>-AR → E</strong> (hable, hables…) · <strong>-ER/-IR → A</strong> (coma, comas…)</p>
+    <p style="margin-top:6px;color:var(--muted)">💡 Go-go pattern: if yo ends in -go (tenGO, haGO, venGO, ponGO, salGO, diGO) → stem stays → tenga, haga, venga, ponga, salga, diga</p>
+  </div>
+
+  <div style="font-family:var(--display);font-size:.9rem;font-weight:900;margin-bottom:12px;color:var(--s1)">🎯 Disparadores por categoría (slide 21)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:20px">${catHtml}</div>
+
+  <div style="font-family:var(--display);font-size:.9rem;font-weight:900;margin-bottom:12px;color:var(--s5)">🔀 Contrastes clave (slides 12-15)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:20px">${contrastHtml}</div>
+
+  <div style="font-family:var(--display);font-size:.9rem;font-weight:900;margin-bottom:12px;color:var(--s3)">📝 Práctica — Indicativo → Subjuntivo (slide 22)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:20px">${practiceHtml}</div>
+
+  <div style="background:rgba(239,68,68,.08);border:1.5px solid rgba(239,68,68,.2);border-radius:13px;padding:13px 16px;font-size:.85rem;line-height:1.8">
+    <div style="font-family:var(--display);font-size:.88rem;font-weight:900;color:#fca5a5;margin-bottom:8px">⚠️ Cuándo NO usar subjuntivo</div>
+    <p><span class="ind-pill">creer que (positivo)</span> · <span class="ind-pill">pensar que (positivo)</span> · <span class="ind-pill">saber que</span> · <span class="ind-pill">ver que</span> · <span class="ind-pill">es verdad que</span> · <span class="ind-pill">es obvio que</span> · <span class="ind-pill">cuando + pasado/hábito</span> · <span class="ind-pill">aunque + hecho</span> · <span class="ind-pill">a lo mejor</span></p>
+  </div>
+  </div>`;
+}
+
+goEx(0);
+</script>
+</body>
+</html>
